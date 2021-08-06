@@ -1,0 +1,27 @@
+1.时间组件
+https://element.eleme.io/#/zh-CN/component/date-picker
+
+页面中有组件使用代码实例，如
+1)设置 默认显示日期
+:default-time="['00:00:00', '23:59:59']"
+
+注意: TODO 英文冒号(:)，表示动态赋值，即该变量中的值可以被改变
+
+时间组件 接受时间类型的参数，从url上反填时间到组件时，要把url中的string先转成number类型，再转成Date类型，如
+this.dateFilter[0] = new Date(Number(urlQueryParameters.startTime))
+this.dateFilter[1] = new Date(Number(urlQueryParameters.endTime))
+
+2.通知
+https://element.eleme.io/#/zh-CN/component/notification#options
+this.$notify({
+
+})
+
+3.
+
+
+
+
+
+
+
