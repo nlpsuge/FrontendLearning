@@ -62,7 +62,15 @@ Thu Aug 06 2020 00:00:00 GMT+0800 (China Standard Time)
 new Date('2020/08/06')
 Thu Aug 06 2020 00:00:00 GMT+0800 (China Standard Time)
 
-6.
+6.变量展开 和 变量移除
+const { var1, var2, var3, ...val } = this.form
+this.form = val
+
+从this.form中移除了三个变量 var1 var2 var3
+
+
+7.
+
 
 
 
