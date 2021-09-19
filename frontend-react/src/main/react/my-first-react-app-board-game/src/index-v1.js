@@ -1,10 +1,25 @@
-// tic-tac-toe(三连棋)
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
 const var1 = 'var1'
 let var2 = 'var2'
+
+/**
+ * 把两个 this.props 都替换成了 props
+ * 
+ * 当我们把 Square 修改成函数组件时，我们同时也把 onClick={() => this.props.onClick()} 
+ * 改成了更短的 onClick={props.onClick}（注意两侧都没有括号）。
+ */
+function Square_FunctionalInterface(props) {
+  return (
+    <button 
+      className="Square_FunctionalInterface"
+      onClick={props.onClick}>
+        {props.value}
+    </button>
+  );
+}
 
 class Square extends React.Component {
 
@@ -98,19 +113,119 @@ class Square extends React.Component {
    */
   class Board extends React.Component {
 
+    /**
+     * 为 Board 组件添加构造函数，将 Board 组件的初始状态设置为长度为 9 的空值数组
+     */
+    constructor(props) {
+      super(props)
+      this.state = {
+        // 
+        squares: Array(9).fill(null),
+        // 将 “X” 默认设置为先手棋 
+        // 游戏的状态会被保存下来
+        xIsNext: true
+      }
+    }
+
+    renderSquare_1(serialNumber) {
+        // 从Board组件中 传递一个名为 serialNumber 的 prop 到 Square 当中
+      return <Square serialNumber = {serialNumber}/>;
+    }
+
+    renderSquare_2(serialNumber) {
+      // 在最外层加了小括号，这样 JavaScript 解析的时候就不会在 return 的后面自动插入一个分号从而破坏代码结构
+      // 
+      // 从 Board 组件向 Square 组件中传递两个 props 参数：value 和 onClick,
+      // 其中，alue 的值可以是 'X'、 'O'、 或 null（null 代表空方格）
+      return <Square value={this.state.squares[serialNumber]} />;
+    }
+
+    renderSquare_3(serialNumber) {
+      // 在最外层加了小括号，这样 JavaScript 解析的时候就不会在 return 的后面自动插入一个分号从而破坏代码结构
+      // 
+      // 从 Board 组件向 Square 组件中传递两个 props 参数：value 和 onClick,
+      // 其中，alue 的值可以是 'X'、 'O'、 或 null（null 代表空方格）
+    return (
+          <Square 
+            value = {this.state.squares[serialNumber]}
+            onClick={() => this.handleClick(serialNumber) } 
+          />
+        );
+    }
+
     renderSquare(serialNumber) {
 
-      return (
-            <Square 
-              value = {this.props.squares[serialNumber]}
-              onClick={() => this.props.onClick(serialNumber) } 
-            />
-          );
+    return (
+          <Square 
+            value = {this.state.squares[serialNumber]}
+            onClick={() => this.handleClick_X_O_Move_Respectively(serialNumber) } 
+          />
+        );
+    }
+
+    renderSquare_FunctionalInterface(serialNumber) {
+      // 在最外层加了小括号，这样 JavaScript 解析的时候就不会在 return 的后面自动插入一个分号从而破坏代码结构
+      // 
+      // 从 Board 组件向 Square 组件中传递两个 props 参数：value 和 onClick,
+      // 其中，alue 的值可以是 'X'、 'O'、 或 null（null 代表空方格）
+    return (
+          <Square_FunctionalInterface
+            value = {this.state.squares[serialNumber]}
+            onClick={() => this.handleClick(serialNumber) } 
+          />
+        );
+    }
+
+    /**
+     * 当前 state 没有保存在单个的 Square 组件中，而是保存在了 Board 组件中。每当 Board 的 state 
+     * 发生变化的时候，这些 Square 组件都会重新渲染一次。
+     * 
+     * 
+     * 因为 Square 组件不再持有 state，因此每次它们被点击的时候，Square 组件就会从 Board 组件中
+     * 接收值，并且通知 Board 组件。在 React 术语中，我们把目前的 Square 组件称做“受控组件”。
+     * 在这种情况下，Board 组件完全控制了 Square 组件。
+     */
+    handleClick(serialNumber) {
+      // 调用了 .slice() 方法创建了 squares 数组的一个副本，而不是直接在现有的数组上进行修改。
+      // 使用 .slice() 函数对数组进行拷贝
+      const squares = this.state.squares.slice();
+      squares[serialNumber] = 'x';
+      this.setState({squares: squares});
+    }
+
+    /**
+     * 实现 “X” 和 “O” 轮流落子的效果
+     */
+    handleClick_X_O_Move_Respectively(serialNumber) {
+      const squares = this.state.squares.slice();
+      // 当有玩家胜出时，或者某个 Square 已经被填充时，该函数不做任何处理直接返回
+      // let hasWinner // TODO
+      let hasWinner = calculateWinner(squares) || squares[serialNumber];
+      if (hasWinner) {
+        return;
+      }
+      squares[serialNumber] = this.state.xIsNext ? 'X' : 'O';
+      this.setState({
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+      });
     }
   
     render() {
+      // const status = 'Next player: X';
+      // const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+
+      const winer = calculateWinner(this.state.squares);
+      let status = 'x';
+      if (winer) {
+        status = 'Winner: ' + winer;
+      } else {
+        status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      }
+  
       return (
         <div>
+          <div className="status">{status}</div>
           <div className="board-row">
             {this.renderSquare(0)}
             {this.renderSquare(1)}
@@ -127,16 +242,16 @@ class Square extends React.Component {
             {this.renderSquare(8)}
           </div>
           <div className="board-row">
-            {this.renderSquare(9)}
-            {this.renderSquare(10)}
-            {this.renderSquare(11)}
+            {this.renderSquare_FunctionalInterface(9)}
+            {this.renderSquare_FunctionalInterface(10)}
+            {this.renderSquare_FunctionalInterface(11)}
           </div>
         </div>
       );
     }
   }
   
-  class Game_1 extends React.Component {
+  class Game extends React.Component {
     render() {
       return (
         <div className="game">
@@ -146,129 +261,6 @@ class Square extends React.Component {
           <div className="game-info">
             <div>{/* status */}</div>
             <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
-    }
-  }
-
-  /**
-   * Game 组件展示出一个历史步骤的列表。这个功能需要访问 history 的数据，
-   * 因此我们把 history 这个 state 放在顶层 Game 组件中
-   */
-  class Game extends React.Component {
-    constructor(props) {
-      super(props);
-
-      this.state = {
-        history: [{
-          squares: Array(12).fill(null),
-        }],
-        
-        xIsNext: true,
-        // 用于给用户展示当前的步骤
-        stepNumber: 0,
-        
-      }
-
-      console.log(this);
-      console.log(this.state);
-    }
-
-    jumpTo(index) {
-      this.setState({
-        stepNumber: index,
-        xIsNext: (index % 2) === 0
-      });
-    }
-
-    /**
-     * 实现 “X” 和 “O” 轮流落子的效果
-     */
-    handleClick_X_O_Move_Respectively(serialNumber) {
-      // const history = this.state.history;
-      // 我们还把读取 this.state.history 换成了读取 this.state.history.slice(0, this.state.stepNumber + 1) 的值。如果我们“回到过去”，然后再走一步新棋子，原来的“未来”历史记录就不正确了，这个替换可以保证我们把这些“未来”的不正确的历史记录丢弃掉。
-      const history = this.state.history.slice(0, this.state.stepNumber + 1);
-      const currentHistory = history[history.length - 1]
-      const squares = currentHistory.squares.slice();
-      // 当有玩家胜出时，或者某个 Square 已经被填充时，该函数不做任何处理直接返回
-      let hasWinner = calculateWinner(squares) || squares[serialNumber];
-      if (hasWinner) {
-        return;
-      }
-      squares[serialNumber] = this.state.xIsNext ? 'X' : 'O';
-      this.setState({
-        // 把新的历史记录拼接到 history 上
-        // concat() 方法可能与你比较熟悉的 push() 方法不太一样，它并不会改变原数组，所以我们推荐使用 concat()。
-        history: history.concat([{
-          squares: squares,
-        }]),
-        xIsNext: !this.state.xIsNext,
-        stepNumber: history.length
-      });
-    }
-
-    /**
-     * 每当一个列表重新渲染时，React 会根据每一项列表元素的 key 来检索上一次渲染时与每个 key 
-     * 所匹配的列表项。如果 React 发现当前的列表有一个之前不存在的 key，那么就会创建出一个新的组件。
-     * 如果 React 发现和之前对比少了一个 key，那么就会销毁之前对应的组件。如果一个组件的 key 
-     * 发生了变化，这个组件会被销毁，然后使用新的 state 重新创建一份。
-     * 
-     * 
-     * key 是 React 中一个特殊的保留属性（还有一个是 ref，拥有更高级的特性）。当 React 元素被
-     * 创建出来的时候，React 会提取出 key 属性，然后把 key 直接存储在返回的元素上。虽然 key 
-     * 看起来好像是 props 中的一个，但是你不能通过 this.props.key 来获取 key。React 会通过 
-     * key 来自动判断哪些组件需要更新。组件是不能访问到它的 key 的。
-     * 
-     * 
-     * 强烈推荐，每次只要你构建动态列表的时候，都要指定一个合适的 key。
-     * 
-     * 组件的 key 值并不需要在全局都保证唯一，只需要在当前的同一级元素之前保证唯一即可。 TODO
-     * 
-     */
-    render() {
-      const history = this.state.history;
-      const currentHistory = history[this.state.stepNumber];
-      const winner = calculateWinner(currentHistory.squares);
-
-      const moves = history.map((setp, index) => {
-        debugger
-        console.log(setp);
-        console.log(index);
-        const desc = index ? "Go to move #" + index : "Go to game start";
-        return (
-          // Warning: Each child in a list should have a unique "key" prop.
-          // <li>
-          //   <button onClick={() => {this.jumpTo(index)}}>{desc}</button>
-          // </li>
-
-          <li key={index}>
-            <button onClick={() => {this.jumpTo(index)}}>{desc}</button>
-          </li>
-        )
-      });
-
-      let status;
-      if (winner) {
-        status = 'Winner: ' + winner;
-      } else {
-        status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-      }
-
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board 
-              state = {this.state}
-              squares={currentHistory.squares}
-              // See: board -> onClick={() => this.props.onClick(serialNumber) }
-              // 感觉像是 board 组件调用了 game 提供的回调函数
-              onClick={ (serialNumber) => {this.handleClick_X_O_Move_Respectively(serialNumber)}}
-              />
-          </div>
-          <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
           </div>
         </div>
       );

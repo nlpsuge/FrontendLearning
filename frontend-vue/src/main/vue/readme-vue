@@ -1,0 +1,12 @@
+1.
+https://cloud.tencent.com/developer/article/1612867
+Vue 对于响应式属性的更新，只会精确更新依赖收集的当前组件，而不会递归的去更新子组件，这也是它性能强大的原因之一
+
+2.
+(vue)每个组件都有自己的渲染 watcher，它掌管了当前组件的视图更新，但是并不会掌管 ChildComponent 的更新
+
+3.
+vue必会面试题+答案
+https://cloud.tencent.com/developer/article/1842984?from=article.detail.1612867
+
+4.

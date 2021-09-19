@@ -1,0 +1,16 @@
+{
+  "name": "polling-via-dva-redux-saga",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@umijs/preset-react": "^1.8.24",
+    "umi": "^3.5.18"
+  }
+}
