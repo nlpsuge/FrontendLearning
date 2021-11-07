@@ -21,6 +21,20 @@ allowing embedded expressions called substitutions.
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 A Promise is an object representing the eventual completion or failure of an asynchronous operation.
 
+Eg:
+
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('foo');
+  }, 300);
+});
+
+myPromise
+  .then(handleResolvedA, handleRejectedA)
+  .then(handleResolvedB, handleRejectedB)
+  .then(handleResolvedC, handleRejectedC);
+
+
 
 4.GET 拼接请求参数
 https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
@@ -99,7 +113,9 @@ https://juejin.cn/post/6844903603266650125
 
 10.Date format
 
-11.
+11.import
+
+11.1
 Correct syntax to import constants in ES6
 https://stackoverflow.com/questions/52048536/correct-syntax-to-import-constants-in-es6/52048583
 
@@ -111,6 +127,17 @@ anotherModule.js:
 import {foo, bar} from './constants'
 
 console.log(foo,bar)
+
+11.2
+import xxx from 'xxx' VS import xxx from 'xxx'
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+import { default as XxxModal } from './components/XxxModal';
+
+
+11.2.1
+
+
+
 
 12.遍历
 
@@ -192,6 +219,30 @@ JavaScript admittedly has plenty of flaws, but one of the largest and most promi
 https://developpaper.com/question/ant-table-row-merge/
 
 18.
+How to check whether a string contains a substring in JavaScript?
+https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contains-a-substring-in-javascript
+const string = "foo";
+const substring = "oo";
+
+console.log(string.includes(substring)); // true
+
+19.
+expr1 || expr2
+If expr1 can be converted to true, returns expr1; else, returns expr2.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
+
+20. 空对象判断
+https://stackoverflow.com/a/679937
+
+If ECMAScript 5 support is available, you can use Object.keys()
+Object.keys(obj).length === 0
+
+Utils.isEmptyObject()
+
+
+21.
+
 
 
 

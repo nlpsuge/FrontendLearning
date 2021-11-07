@@ -32,4 +32,8 @@ export default defineConfig({
 https://umijs.org/zh-CN/docs/routing
 config-route.js
 
-5.
+5.约定式路由
+https://umijs.org/zh-CN/docs/convention-routing
+
+6.
+

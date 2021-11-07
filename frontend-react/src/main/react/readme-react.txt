@@ -239,6 +239,34 @@ https://zh-hans.reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-metho
 componentDidMount() 方法会在组件已经被渲染到 DOM 中后运行
 
 34.
+componentWillMount 生命周期
+
+当生命周期函数为componentWillMount 时, 执行的顺序为: constructor -> componentWillMount -> render(加载过程默认的)-> render(this.setData 更新过程触发的)
+
+35.
+Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+问题出现场景:
+Table父组件 组件有修改功能。点击 修改 弹出Modal子组件 dialog，填写数据，点击确定按钮，
+在父组件中更新 state，在子组件中异步隐藏dialog。
+控制台上出现上述警告。本警告只在进入页面后，提示一次，后续再修改不会再提示。
+
+问题解决:
+将在父组件中更新 state 这个操作变成同步操作，更新完毕后才在子组件中隐藏自己
+
+const tablePromise = new Promise((resolve, reject) => {
+  // 1. refresh state in the parent component in Promise
+  this.props.refreshTable(allFieldsValue)
+}).then(() => {
+  // 2. then hide self
+  this.setState({
+    visible: false,
+  });
+})
+
+See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+
+
 
 
 
