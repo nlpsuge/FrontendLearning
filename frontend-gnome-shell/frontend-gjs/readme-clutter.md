@@ -57,7 +57,7 @@ print(Clutter.AlignAxis.X_AXIS)
 # TODO Clutter.Actor.add_child
 https://valadoc.org/clutter-1.0/Clutter.Actor.add_child.html
 
-Adds child to the children of this.
+Adds a child to the children of this.
 
 # 
 
