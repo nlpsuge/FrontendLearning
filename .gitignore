@@ -109,3 +109,5 @@ dist
 
 frontend-react/target
 frontend-vue/target
+
+.history
