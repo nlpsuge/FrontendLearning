@@ -241,8 +241,11 @@ Object.keys(obj).length === 0
 Utils.isEmptyObject()
 
 
-21.
-
+21. push: Add elements to an array
+const an_array = ['a', 'b']
+console.log(an_array)
+an_array.push('c')
+console.log(an_array)
 
 
 
