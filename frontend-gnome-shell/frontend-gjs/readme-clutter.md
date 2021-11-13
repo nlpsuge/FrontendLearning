@@ -16,6 +16,7 @@ The factor depends on the align_axis property and it is a value between 0.0
 
 # Testing AlignConstraint
 https://www.roojs.com/seed/gir-1.2-gtk-3.0/seed/Clutter.Constraint.html
+
 https://www.roojs.com/seed/gir-1.2-gtk-3.0/seed/Clutter.AlignConstraint.html
 ``` js
 const { Clutter, Graphene } = imports.gi;
@@ -45,6 +46,27 @@ print(ca.source)
 print(ca.source instanceof Clutter.Actor)
 ```
 
+# Testing Clutter.BindConstraint
+https://valadoc.org/clutter-1.0/Clutter.BindConstraint.html
+
+https://valadoc.org/clutter-1.0/Clutter.BindCoordinate.html
+
+```
+const { Clutter, Graphene } = imports.gi;
+const windowContainer = new Clutter.Actor();
+const ca = new Clutter.BindConstraint({
+    source: windowContainer,
+    coordinate: Clutter.BindCoordinate.Y,
+    offset: 30,
+})
+print(ca)
+print(ca.offset)
+print(ca.coordinate)
+ca.set_offset(1)
+print(ca.offset)
+
+```
+
 # Clutter.AlignAxis.Y_AXIS and Clutter.AlignAxis.X_AXIS
 ```
 const { Clutter } = imports.gi;
@@ -59,6 +81,12 @@ https://valadoc.org/clutter-1.0/Clutter.Actor.add_child.html
 
 Adds a child to the children of this.
 
+# Clutter.Actor.add_constraint
+https://valadoc.org/clutter-1.0/Clutter.Actor.add_constraint.html
+
+# Clutter.Actor.remove_constraint
+https://valadoc.org/clutter-1.0/Clutter.Actor.remove_constraint.html
+
+The reference held by this on the Constraint will be released
+
 # 
-
-
