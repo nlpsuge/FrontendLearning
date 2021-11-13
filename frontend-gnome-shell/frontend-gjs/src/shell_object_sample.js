@@ -1,5 +1,5 @@
 //****
-//**** Note that this file is completely from https://gist.github.com/buzztaiki/1492431
+//**** This file was copied from from https://gist.github.com/buzztaiki/1492431
 //**** Thank you :)
 //****
 
