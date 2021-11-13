@@ -19,8 +19,6 @@ public class CorsUiConfig implements WebMvcConfigurer {
 
     /**
      * cors.enable=true 启用 cors
-     * <p>
-     * 除了开发环境，其他环境应设置为 false
      */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
