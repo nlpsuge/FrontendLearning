@@ -22,4 +22,18 @@ A widget is a piece or part of your application which the user interacts with. E
 ## Signals
 https://gjs.guide/guides/gtk/3/02-widgets.html#signals
 
+## Convert GTK3 to GTK4
+[gtk4-builder-tool](https://gitlab.gnome.org/GNOME/gtk/-/blob/master/docs/reference/gtk/gtk4-builder-tool.rst)
+
+Note that Glade doesn't support GTK4.
+
+`gtk4-builder-tool` can perform various operations on GtkBuilder UI definition
+files.
+
+``` Bash
+# Find one in OS, flatpak may provide this file
+locate gtk4-builder-tool
+gtk4-builder-tool simplify --3to4 --replace Settings.ui
+```
+
 ## 
