@@ -1,4 +1,5 @@
 #!/usr/bin/env gjs
+// gjs -d RunningGtkInGjs.js # -d for debugging
 
 // https://gjs.guide/guides/gtk/3/04-running-gtk.html
 
@@ -17,13 +18,24 @@ Gtk.init(null);
 
 let window = new Gtk.Window();
 window.set_title('world');
+
 // add the widget to the window
-let spinButton = new Gtk.SpinButton();
+
+// Ability to increase or reduce value
+let adjustment = new Gtk.Adjustment({
+    value: 5            /** the inital value */,
+    lower: 1            /** The minimum value */,
+    upper: 15           /** The maximum value */,
+    step_increment: 1   /** The step increment */,
+    page_increment: 1   /** The page increment */,
+    page_size: 0        /** The page size */});
+let spinButton = new Gtk.SpinButton({
+    adjustment: adjustment
+});
+log('Adjustment maximum value is: ' + adjustment.get_upper())
 spinButton.set_range(1, 15);
 spinButton.connect('value_changed', (data1) => {
-    
     log('New value: ' + data1.get_value());
-    
 });
 window.add(spinButton);
 print("default", 'value', 'is', ": ", spinButton.get_value())
