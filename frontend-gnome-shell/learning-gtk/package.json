@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "gjs src/RunningGtkInGjs.js"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
