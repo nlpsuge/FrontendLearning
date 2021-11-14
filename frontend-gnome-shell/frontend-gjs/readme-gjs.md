@@ -140,3 +140,7 @@ db> p window.set_title('hello')
 [JavaScript Debugging](https://wiki.gnome.org/Projects/GnomeShell/DebuggingJavaScript)
 
 
+# Extends
+[Extending GObject Classes](https://gjs.guide/guides/gjs/intro.html#extending-gobject-classes)
+
+# 
