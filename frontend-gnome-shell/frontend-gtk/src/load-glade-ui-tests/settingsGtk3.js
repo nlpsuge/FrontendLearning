@@ -18,7 +18,7 @@ const Settings = GObject.registerClass(
         load_ui() {
             log('Loading ui')
             this._builder = new Gtk.Builder();
-            this._builder.add_from_file('./Settings.ui');
+            this._builder.add_from_file('./SettingsGtk3.ui');
             this.notebook = this._builder.get_object('settings_notebook');
             this.notebook.show_all();
             this.viewport = new Gtk.Viewport();

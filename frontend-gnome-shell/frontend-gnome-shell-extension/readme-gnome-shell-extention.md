@@ -1,6 +1,10 @@
 # Doc
 [How to Create A GNOME Extension](https://www.codeproject.com/Articles/5271677/How-to-Create-A-GNOME-Extension)
 
+# [How to port Extensions to GNOME Shell 40](https://gjs.guide/extensions/upgrading/gnome-shell-40.html#contents)
+
+
+
 # Open Prefs Dialog from Terminal
 ``` Bash
 gnome-extensions prefs uuid-of-example@example.com
