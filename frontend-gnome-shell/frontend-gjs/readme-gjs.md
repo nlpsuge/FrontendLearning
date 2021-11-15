@@ -75,8 +75,8 @@ directly to stdout of the current process
 ```
 $ gjs 
 gjs\> print('some', 'string', 42); 
-some string 42$ 
-gjs\> printerr('some text 42');
+some string 42
+$ gjs\> printerr('some text 42');
 some text
 ```
 
@@ -86,7 +86,7 @@ some text
 ***I personally not recommend using this method to debug, due to:***
 - Have to import `System`
 - And have to delete `System.breakpoint()` after debug
-- Issue of <optimized out> in GDB
+- Issue of `<optimized out>` in GDB
 
 [doc/Modules.md](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md)
 
