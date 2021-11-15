@@ -20,11 +20,17 @@ const Settings = GObject.registerClass(
             this._builder = new Gtk.Builder();
             this._builder.add_from_file('./SettingsGtk3.ui');
             this.notebook = this._builder.get_object('settings_notebook');
-            this.notebook.show_all();
-            this.viewport = new Gtk.Viewport();
-            this.viewport.add(this.notebook);
-            this.widget = new Gtk.ScrolledWindow();
-            this.widget.add(this.viewport);
+            
+            
+            this.app = new Gtk.Application();
+            this.app.connect('activate', () => {
+                this.window = new Gtk.Window();
+                this.window.add(this.notebook);
+
+                // https://docs.gtk.org/gtk3/method.Application.add_window.html
+                this.app.add_window(this.window);
+            });
+            
             log('Loaded ui')
         }
     }
@@ -32,7 +38,7 @@ const Settings = GObject.registerClass(
 
 
 let settings = new Settings();
-let widget = settings.widget;
-widget.show_all();
+let window = settings.window;
+window.show_all();
 
 Gtk.main()
