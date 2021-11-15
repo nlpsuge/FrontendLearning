@@ -21,12 +21,10 @@ const Settings = GObject.registerClass(
             this._builder.add_from_file('./SettingsGtk3.ui');
             this.notebook = this._builder.get_object('settings_notebook');
             
-            
+            this.window = new Gtk.Window();
+            this.window.add(this.notebook);
             this.app = new Gtk.Application();
             this.app.connect('activate', () => {
-                this.window = new Gtk.Window();
-                this.window.add(this.notebook);
-
                 // https://docs.gtk.org/gtk3/method.Application.add_window.html
                 this.app.add_window(this.window);
             });
