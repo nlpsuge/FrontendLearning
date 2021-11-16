@@ -34,4 +34,15 @@ Maintaining local history of files
 code --install-extension=xyz.local-history
 ```
 
-## 
+## change-case 
+https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case
+
+Quickly change the case (camelCase, CONSTANT_CASE, snake_case, etc) of the current selection or current word
+
+``` Bash
+code --install-extension=wmaurer.change-case
+```
+
+If only one word is selected, the extension.changeCase.commands command gives you a preview of each option.
+
+
