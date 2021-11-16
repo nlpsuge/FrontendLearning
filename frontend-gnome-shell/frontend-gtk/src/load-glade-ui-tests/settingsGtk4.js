@@ -5,6 +5,10 @@
 imports.gi.versions.Gtk = "4.0"
 const { Gtk, GObject, Gio } = imports.gi;
 
+const DEFAULT_APP_ICON_POSITION = 'Bottom';
+const DO_NOT_SHOW_APP_ICON_WHEN_FULLSCREEN = true;
+const DEFAULT_WINDOW_ACTIVE_SIZE_INC = 10;
+
 const Settings = GObject.registerClass(
     {
         GTypeName: 'AlwaysShowTitlesInOverviewSettings',
@@ -19,18 +23,21 @@ const Settings = GObject.registerClass(
         load_ui() {
             log('Loading ui')
             this._builder = new Gtk.Builder();
+            this._builder.set_scope(new BuilderScope(this));
             this._builder.add_from_file('./SettingsGtk4.ui');
             this.notebook = this._builder.get_object('settings_notebook');
             log('Loaded ui')
         }
 
-        run_ui() {
+        run() {
             this.app = new Gtk.Application({
                 application_id: "com.example.hi"
             });
             this.app.connect('activate', () => {
                 this.win = new Gtk.Window();
                 this.win.set_title('Settings');
+
+                
                 
                 // Set the notebook widget to the window widget
                 this.win.set_child(this.notebook);
@@ -55,5 +62,22 @@ const Settings = GObject.registerClass(
     }
 );
 
+const BuilderScope = GObject.registerClass({
+    Implements: [Gtk.BuilderScope],
+}, class BuilderScope extends GObject.Object {
+    _init(preferences) {
+        this._preferences = preferences;
+        super._init();
+    }
+
+    position_bottom_button_clicked_cb(button) {
+        log('bottom button clicked' + button.get_value());
+    }
+
+    position_middle_button_clicked_cb(button) {
+        log('middle button clicked' + button.get_value());
+    }
+});
+
 const settings = new Settings();
-settings.run_ui();
+settings.run();
