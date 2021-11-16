@@ -46,7 +46,7 @@ A widget is a piece or part of your application which the user interacts with. E
 ## Signals
 https://gjs.guide/guides/gtk/3/02-widgets.html#signals
 
-## Convert GTK3 to GTK4
+# Convert GTK3 to GTK4
 [gtk4-builder-tool](https://gitlab.gnome.org/GNOME/gtk/-/blob/master/docs/reference/gtk/gtk4-builder-tool.rst)
 
 [gtk4-builder-tool - man - w3cub](https://docs.w3cub.com/gtk~4.0/gtk4-builder-tool)
@@ -62,4 +62,9 @@ locate gtk4-builder-tool
 gtk4-builder-tool simplify --3to4 --replace Settings.ui
 ```
 
-## 
+# GtkBuilderScope
+https://docs.w3cub.com/gtk~4.0/gtkbuilderscope
+
+GtkBuilderScope is an interface to provide support to GtkBuilder, primarily for looking up programming-language-specific values for strings that are given in a GtkBuilder UI file.
+
+# 
