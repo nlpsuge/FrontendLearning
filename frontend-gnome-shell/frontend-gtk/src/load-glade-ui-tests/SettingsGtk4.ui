@@ -46,7 +46,7 @@
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="active">True</property>
-                                        <!-- <signal name='clicked' handler='position_bottom_button_clicked_cb' swapped='no'/> -->
+                                        <signal name="clicked" handler="position_bottom_button_clicked_cb" swapped="no"/>
                                       </object>
                                     </child>
                                     <child>
@@ -58,7 +58,7 @@
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="group">position_bottom_button</property>
-                                        <signal name='clicked' handler='position_middle_button_clicked_cb' swapped='no'/>
+                                        <signal name="clicked" handler="position_middle_button_clicked_cb" swapped="no"/>
                                       </object>
                                     </child>
                                     <child>
@@ -129,6 +129,7 @@
                                 <property name="focusable">1</property>
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
+                                <property name="active">True</property>
                                 <layout>
                                   <property name="column">1</property>
                                   <property name="row">0</property>
