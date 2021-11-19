@@ -57,6 +57,10 @@ const Settings = GObject.registerClass(
                 window_active_size_inc_scale.add_mark(num, Gtk.PositionType.TOP, num.toString());
             })
 
+            window_active_size_inc_scale.connect('value-changed', (scale, value) => {
+                log('The current value is: ' + scale.get_value());
+            });
+
         }
 
         run() {
