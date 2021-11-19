@@ -30,12 +30,16 @@ const Settings = GObject.registerClass(
             this.notebook = this._builder.get_object('settings_notebook');
             
             this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
-                log('switch activate via `Lang.bind (this, function(widget) {}`: ' + widget);
-
+                // Whether the GtkSwitch widget is in its on or off state.
+                const active = widget.active
+                log('switch activate via `Lang.bind (this, function(widget) {}`: ' + active);
             }));
 
-            this._builder.get_object('multimon_multi_switch').connect('notify::active', (widget) => {
-                log('switch activate via lambda: ' + widget);
+            this._builder.get_object('multimon_multi_switch').connect('notify::active', (widget, value) => {
+                // Whether the GtkSwitch widget is in its on or off state.
+                const active = widget.active
+                log('switch activate via lambda: ' + active);
+
 
             });
 
