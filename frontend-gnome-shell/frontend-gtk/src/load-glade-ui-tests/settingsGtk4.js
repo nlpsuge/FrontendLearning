@@ -37,7 +37,7 @@ const Settings = GObject.registerClass(
             this.app.connect('activate', () => {
                 this.win = new Gtk.Window();
                 this.win.set_title('Settings');
-                
+
                 this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
                     log('switch activate via `Lang.bind (this, function(widget) {}`: ' + widget);
 
@@ -49,6 +49,7 @@ const Settings = GObject.registerClass(
                 });
 
                 let window_active_size_inc_scale = this._builder.get_object('window_active_size_inc_scale');
+                this.window_active_size_inc_scale = window_active_size_inc_scale;
                 window_active_size_inc_scale.set_format_value_func((scale, value) => {
                     return value + ' px';
                 });
@@ -57,7 +58,7 @@ const Settings = GObject.registerClass(
 
                 // window_active_size_inc_scale.set_format_value_func(Lang.bind(this, function(scale, value) {
                 //     return value + ' px';
-                // }));                
+                // }));
                 let min = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[0];
                 let max = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.length - 1];
                 window_active_size_inc_scale.set_range(min, max);
@@ -82,6 +83,9 @@ const Settings = GObject.registerClass(
             });
             this.app.connect('shutdown', () => {
                 log('Shutting down...');
+                // unset format_value_func to fix: Attempting to run a JS callback during shutdown / garbage collection
+                // https://github.com/purescript-gjs/purescript-gjs/blob/57a7a078895cb1cab6ca57eff6c33c6940ab8380/src/Gtk4/Scale.purs#L24
+                this.window_active_size_inc_scale.set_format_value_func(null);
             });
             const status = this.app.run([]);
             print("Exit code: ", status);
