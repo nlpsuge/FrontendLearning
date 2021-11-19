@@ -12,6 +12,7 @@ const DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE = [5, 10, 15, 20];
 
 const Settings = GObject.registerClass(
     {
+        // Should be a globally unique GType name
         GTypeName: 'AlwaysShowTitlesInOverviewSettings',
     },
     class Settings extends GObject.Object {
@@ -101,6 +102,8 @@ const Settings = GObject.registerClass(
 );
 
 const BuilderScope = GObject.registerClass({
+    // Should be a globally unique GType name
+    GTypeName: "AlwaysShowTitlesInOverviewBuilderScope",
     Implements: [Gtk.BuilderScope],
 }, class BuilderScope extends GObject.Object {
     _init(preferences) {
