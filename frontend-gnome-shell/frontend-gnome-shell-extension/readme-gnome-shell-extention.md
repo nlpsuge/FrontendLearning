@@ -5,11 +5,11 @@
 
 
 
-# Open Prefs Dialog from Terminal
+# Open the preference dialog from the command line directly
 ``` Bash
 gnome-extensions prefs uuid-of-example@example.com
 ```
-You can use it to open the References of an extention as soon as possible, without any click.
+You can use it to open the References of an extension as soon as possible, without any click.
 
 # [Logging](https://gjs.guide/extensions/development/debugging.html#logging)
 
@@ -30,3 +30,57 @@ print('a message');
 // Print a message to stderr
 printerr('An error occured');
 ```
+
+# [Preferences](https://gjs.guide/extensions/development/preferences.html#gsettings)
+
+## GSettings
+Used for storing application settings
+
+## Creating the schema
+Schema files describe the types and default values of a particular group of settings, using the same type format as GVariant
+
+```
+cd extension-root-path
+mkdir schemas/
+vim schemas/org.gnome.shell.extensions.example.gschema.xml
+```
+
+And copy && paste those content:
+``` xml
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.example" path="/org/gnome/shell/extensions/example/">
+    <!-- See also: https://developer.gnome.org/glib/stable/gvariant-format-strings.html -->
+    <key name="show-indicator" type="b">
+      <default>true</default>
+    </key>
+  </schema>
+</schemalist>
+```
+Change the GSchema ID and path for your needs.
+
+# Compiling the schema
+Once you are done defining you schema, you must compile it before it can be used:
+```Bash
+glib-compile-schemas schemas/
+
+ls schemas
+example.gschema.xml  gschemas.compiled
+```
+
+# Integrating GSettings
+[Integrating GSettings](https://gjs.guide/extensions/development/preferences.html#integrating-gsettings)
+
+Use `ExtensionUtils.getSettings('org.gnome.shell.extensions.example');` to get settings from the compiled gschema.
+
+And use
+``` js
+this.settings.bind(
+            'show-indicator',
+            this._indicator,
+            'visible',
+            Gio.SettingsBindFlags.DEFAULT
+        );
+```
+to bind GProperties (properties registered on a GObject class), **not working with JavaScript properties**, watch for the changes, for example changing it on Preferences, via `dconf` or `gsettings`.
+
