@@ -51,7 +51,13 @@ const Settings = GObject.registerClass(
                 let window_active_size_inc_scale = this._builder.get_object('window_active_size_inc_scale');
                 window_active_size_inc_scale.set_format_value_func((scale, value) => {
                     return value + ' px';
-                });                
+                });
+
+                // Or
+
+                // window_active_size_inc_scale.set_format_value_func(Lang.bind(this, function(scale, value) {
+                //     return value + ' px';
+                // }));                
                 let min = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[0];
                 let max = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.length - 1];
                 window_active_size_inc_scale.set_range(min, max);
@@ -73,6 +79,9 @@ const Settings = GObject.registerClass(
                 // This call can only happen after the application has started; 
                 // typically, you should add new application windows in response to the emission of the “activate” signal.
                 this.app.add_window(this.win);
+            });
+            this.app.connect('shutdown', () => {
+                log('Shutting down...');
             });
             const status = this.app.run([]);
             print("Exit code: ", status);
