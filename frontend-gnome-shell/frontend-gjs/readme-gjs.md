@@ -1,19 +1,18 @@
 # Doc
 [gjs guide](https://gjs.guide/guides/)
 
+[gjs - readme](https://gitlab.gnome.org/GNOME/gjs)
+
 [gjs docs](https://gjs-docs.gnome.org/)
 
 [GJS: Javascript Bindings for GNOME](https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md)
 
 # Introduction
-The current stable series is built on Mozilla's SpiderMonkey 78,
-featuring ECMAScript 2019 and GObject Introspection making most of
-the GNOME platform API available.
+GNOME Javascript (GJS)
 
-GJS includes some built-in modules like Cairo and Gettext, as well as 
-helpers for some core APIs like DBus and GVariants. See the 
-[Modules](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md) 
-page for an overview of the built-in modules and their usage.
+The current stable series is built on Mozilla's SpiderMonkey 78, featuring ECMAScript 2019 and GObject Introspection making most of the GNOME platform API available.
+
+GJS includes some built-in modules like Cairo and Gettext, as well as helpers for some core APIs like DBus and GVariants. See the [Modules](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md) page for an overview of the built-in modules and their usage.
 
 # How to import private components like gi.Shell, git.St in `gjs` or `gjs-console`
 https://gist.github.com/buzztaiki/1492431
@@ -21,23 +20,20 @@ https://gist.github.com/buzztaiki/1492431
 See: [shell_object_sample.js](#src/shell_object_sample.js)
 
 # Imports and Modules
-In GJS every file is treated as a "module" and any variable declared as 
-using 'var' (or global scope) is exported. Each "module" is imported using 
-the 'imports' object using the pattern imports.[fileName] where the file's 
-literal name is fileName.js. If your fileName contains a character that is 
-not a valid Javascript identifier you can access it using the object+key 
-syntax: object['fileName'].
+In GJS every file is treated as a "module" and any variable declared as using 'var' (or global scope) is exported. Each "module" is imported using the 'imports' object using the pattern imports.[fileName] where the file's literal name is fileName.js. If your fileName contains a character that is not a valid Javascript identifier you can access it using the object+key syntax: object['fileName'].
 
-Modules are searched in paths defined in the array imports.searchPath.
-You can modify the value of imports.searchPath to include 
-the directories where to look for modules (before importing modules via imports,
-like:)
+Modules are searched in paths defined in the array imports.searchPath. You can modify the value of imports.searchPath to include the directories where to look for modules before importing modules via imports, like:
 ``` js
 imports.searchPath.push('/tmp/gnome-shell/js')
 ```
 
 ## Modules
 https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md
+
+# [Lang](https://gitlab.gnome.org/GNOME/gjs/blob/HEAD/modules/script/lang.js)
+DEPRECATED
+
+Lang.bind() was necessary to bind this to the function context **before** the availability of arrow functions
 
 
 # TODO Develop GJS in vs code (don't work)
@@ -109,6 +105,8 @@ https://undo.io/resources/value-optimized-out-reverse-debugging-rescue/
 ## Method 2 (recommended personally): `gjs -d` (`-d` means run gjs in a debugger mode, see `gjs --help`)
 [JavaScript Debugging](https://wiki.gnome.org/Projects/GnomeShell/DebuggingJavaScript)
 
+`-d` only available in gjs >= 1.53.90
+
 Run GJS in a debugger mode:
 ``` Bash
 gjs -d RunningGtkInGjs.js
@@ -140,7 +138,13 @@ db> p window.set_title('hello')
 [JavaScript Debugging](https://wiki.gnome.org/Projects/GnomeShell/DebuggingJavaScript)
 
 
-# Extends
+# Extends / Subclassing
 [Extending GObject Classes](https://gjs.guide/guides/gjs/intro.html#extending-gobject-classes)
 
-# 
+[GObject Subclassing](https://gjs.guide/guides/gobject/subclassing.html#contents)
+
+Subclassing is a convenient way to extend most GObject classes, allowing you to define additional methods, properties and signals.
+
+Every class of GObject has a **globally unique GType** and so each subclass must be registered using the GObject.registerClass() function.
+
+## 

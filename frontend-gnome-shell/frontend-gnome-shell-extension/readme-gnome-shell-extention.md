@@ -11,3 +11,6 @@ gnome-extensions prefs uuid-of-example@example.com
 ```
 You can use it to open the References of an extention as soon as possible, without any click.
 
+# Log
+print('title is ' + this._title)
+log('title is ' + this._title)
