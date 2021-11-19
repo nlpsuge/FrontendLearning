@@ -42,14 +42,14 @@ Schema files describe the types and default values of a particular group of sett
 ```
 cd extension-root-path
 mkdir schemas/
-vim schemas/org.gnome.shell.extensions.example.gschema.xml
+vim schemas/org.gnome.shell.extensions.example-a-example.gschema.xml
 ```
 
 And copy && paste those content:
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-  <schema id="org.gnome.shell.extensions.example" path="/org/gnome/shell/extensions/example/">
+  <schema id="org.gnome.shell.extensions.example-a-example" path="/org/gnome/shell/extensions/example-a-example/">
     <!-- See also: https://developer.gnome.org/glib/stable/gvariant-format-strings.html -->
     <key name="show-indicator" type="b">
       <default>true</default>
@@ -65,13 +65,13 @@ Once you are done defining you schema, you must compile it before it can be used
 glib-compile-schemas schemas/
 
 ls schemas
-example.gschema.xml  gschemas.compiled
+org.gnome.shell.extensions.example-a-example.gschema.xml  org.gnome.shell.extensions.example-a-example.gschemas.compiled
 ```
 
 # Integrating GSettings
 [Integrating GSettings](https://gjs.guide/extensions/development/preferences.html#integrating-gsettings)
 
-Use `ExtensionUtils.getSettings('org.gnome.shell.extensions.example');` to get settings from the compiled gschema.
+Use `ExtensionUtils.getSettings('org.gnome.shell.extensions.example-a-example');` to get settings from the compiled gschema.
 
 And use
 ``` js

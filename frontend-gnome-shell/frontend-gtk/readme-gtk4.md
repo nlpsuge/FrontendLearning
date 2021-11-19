@@ -67,4 +67,36 @@ https://docs.w3cub.com/gtk~4.0/gtkbuilderscope
 
 GtkBuilderScope is an interface to provide support to GtkBuilder, primarily for looking up programming-language-specific values for strings that are given in a GtkBuilder UI file.
 
-# 
+# Gio.Settings
+The GSettings class provides a convenient API for storing and retrieving application settings.
+
+When creating a GSettings instance, you have to specify a **schema** that describes the keys in your settings and their types and default values, as well as some other information.
+
+Schema paths **must start with and end with a forward slash character (‘/’)** and **must not contain two sequential slash** characters.
+
+GSettings will use gettext to look up translations for the
+and elements, and also any elements which have a l10n attribute set.
+
+## Gio.Settings binding
+https://docs.gtk.org/gio/method.Settings.bind.html
+
+Once a GObject property has been bound to a setting, changes on either side are automatically propagated to the other side.
+
+``` c
+void
+g_settings_bind (
+  GSettings* settings,
+  const gchar* key,
+  GObject* object,
+  const gchar* property,
+  GSettingsBindFlags flags
+)
+```
+Create a binding between the `key` in the `settings` object and the property `property` of object.
+
+
+
+Note that the lifecycle of the binding is tied to object, and that you can have only one binding per object property. If you bind the same property twice on the same object, the second binding overrides the first one.
+
+
+
