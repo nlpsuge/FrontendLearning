@@ -18,16 +18,45 @@ const Settings = GObject.registerClass(
         _init() {
             // Fix: _gtk_style_provider_private_get_settings: assertion 'GTK_IS_STYLE_PROVIDER_PRIVATE (provider)' failed
             Gtk.init()
-            this.load_ui();
+            this.render_ui();
         }
 
-        load_ui() {
-            log('Loading ui')
+        render_ui() {
+            log('Rendering ui')
             this._builder = new Gtk.Builder();
             this._builder.set_scope(new BuilderScope(this));
             this._builder.add_from_file('./SettingsGtk4.ui');
             this.notebook = this._builder.get_object('settings_notebook');
-            log('Loaded ui')
+            
+            this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
+                log('switch activate via `Lang.bind (this, function(widget) {}`: ' + widget);
+
+            }));
+
+            this._builder.get_object('multimon_multi_switch').connect('notify::active', (widget) => {
+                log('switch activate via lambda: ' + widget);
+
+            });
+
+            let window_active_size_inc_scale = this._builder.get_object('window_active_size_inc_scale');
+            this.window_active_size_inc_scale = window_active_size_inc_scale;
+            window_active_size_inc_scale.set_format_value_func((scale, value) => {
+                return value + ' px';
+            });
+
+            // Or
+
+            // window_active_size_inc_scale.set_format_value_func(Lang.bind(this, function(scale, value) {
+            //     return value + ' px';
+            // }));
+            let min = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[0];
+            let max = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.length - 1];
+            window_active_size_inc_scale.set_range(min, max);
+            window_active_size_inc_scale.set_value(10);
+            DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.slice().forEach(num => {
+                window_active_size_inc_scale.add_mark(num, Gtk.PositionType.TOP, num.toString());
+            })
+
         }
 
         run() {
@@ -37,35 +66,6 @@ const Settings = GObject.registerClass(
             this.app.connect('activate', () => {
                 this.win = new Gtk.Window();
                 this.win.set_title('Settings');
-
-                this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
-                    log('switch activate via `Lang.bind (this, function(widget) {}`: ' + widget);
-
-                }));
-
-                this._builder.get_object('multimon_multi_switch').connect('notify::active', (widget) => {
-                    log('switch activate via lambda: ' + widget);
-
-                });
-
-                let window_active_size_inc_scale = this._builder.get_object('window_active_size_inc_scale');
-                this.window_active_size_inc_scale = window_active_size_inc_scale;
-                window_active_size_inc_scale.set_format_value_func((scale, value) => {
-                    return value + ' px';
-                });
-
-                // Or
-
-                // window_active_size_inc_scale.set_format_value_func(Lang.bind(this, function(scale, value) {
-                //     return value + ' px';
-                // }));
-                let min = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[0];
-                let max = DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE[DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.length - 1];
-                window_active_size_inc_scale.set_range(min, max);
-                window_active_size_inc_scale.set_value(10);
-                DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE.slice().forEach(num => {
-                    window_active_size_inc_scale.add_mark(num, Gtk.PositionType.TOP, num.toString());
-                })
 
                 // Set the notebook widget to the window widget
                 this.win.set_child(this.notebook);
