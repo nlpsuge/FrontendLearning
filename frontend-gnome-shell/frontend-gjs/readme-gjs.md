@@ -7,6 +7,8 @@
 
 [GJS: Javascript Bindings for GNOME](https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md)
 
+[How do I get the monitor of an active window in GNOME?](https://stackoverflow.com/questions/50080430/how-do-i-get-the-monitor-of-an-active-window-in-gnome/50081217#50081217)
+
 # Introduction
 GNOME Javascript (GJS)
 
@@ -147,7 +149,19 @@ Subclassing is a convenient way to extend most GObject classes, allowing you to 
 
 Every class of GObject has a **globally unique GType** and so each subclass must be registered using the GObject.registerClass() function.
 
-# Signal
+# [Signal](https://gjs.guide/guides/gobject/subclassing.html#signals)
 GObjects support a signaling system, similar to events and EventListeners in the JavaScript Web API.
 
-Signals are connected by calling the connect() method, which returns a handler ID that is always truthy. Signals are disconnected by passing that ID to disconnect().
+Signals are connected by calling the connect() method, which returns a handler ID that is always truthy. 
+Signals are disconnected by passing that ID to disconnect().
+
+## notify::property-name
+
+all GObjects have a notify [Object::signal](https://gjs-docs.gnome.org/gobject20/gobject.object#signal-notify)
+ that may be emitted **when a property changes.**
+Usage:
+``` c
+g_signal_connect (text_view->buffer, "notify::paste-target-list",
+                  G_CALLBACK (gtk_text_view_target_list_notify),
+                  text_view)
+``

@@ -4,7 +4,9 @@ gjs-console
 ```
 
 # Doc
-https://valadoc.org/clutter-1.0
+https://valadoc.org/clutter-1.0/Clutter.html
+
+https://gjs-docs.gnome.org/clutter10~1.26.4 (Too simple)
 
 # Clutter.AlignConstraint.set_factor(float)
 https://valadoc.org/clutter-1.0/Clutter.AlignConstraint.set_factor.html
@@ -89,4 +91,19 @@ https://valadoc.org/clutter-1.0/Clutter.Actor.remove_constraint.html
 
 The reference held by this on the Constraint will be released
 
-# 
+# [Clutter.Actor.realized property](https://gjs-docs.gnome.org/clutter10~1.26.4/clutter.actor#property-realized)
+[Gtk.Widget.realize](https://people.gnome.org/~johnp/girdocsalpha/Gtk/Gtk.Widget.realize.html)
+
+Creates the GDK (windowing system) resources associated with a widget. 
+For example, @widget->window will be created when a widget is realized. 
+Normally realization happens implicitly; if you show a widget and all its 
+parent containers, then the widget will be realized and mapped automatically. 
+Realizing a widget requires all the widget's parent widgets to be realized; 
+calling gtk_widget_realize() realizes the widget's parents in addition 
+to when you realize it, bad things will happen. This function is primarily 
+used in widget implementations, and isn't very useful otherwise. 
+Many times when you think you might need it, a better approach is to 
+connect to a signal that will be called after the widget is realized 
+automatically, such as [GtkWidget::draw](https://people.gnome.org/~johnp/girdocsalpha/Gtk/Gtk.Widget.realize.html "GtkWidget::draw"). 
+Or **simply g_signal_connect () to the [GtkWidget::realize](https://people.gnome.org/~johnp/girdocsalpha/Gtk/Gtk.Widget.realize.html "GtkWidget::realize") signal**.
+
