@@ -263,6 +263,6 @@ an_array.push('c')
 console.log(an_array)
 ```
 
-# arrays.some()
+# [arrays.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 The some() method tests whether at least one element in the array passes the test implemented by the provided function.
 
