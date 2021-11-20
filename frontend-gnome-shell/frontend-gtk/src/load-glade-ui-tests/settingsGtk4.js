@@ -28,7 +28,14 @@ const Settings = GObject.registerClass(
             this._builder.set_scope(new BuilderScope(this));
             this._builder.add_from_file('./SettingsGtk4.ui');
             this.notebook = this._builder.get_object('settings_notebook');
-            
+
+            this._builder.get_object('show_app_icon_switch').connect('notify::active', (widget, value) => {
+                // Whether the GtkSwitch widget is in its on or off state.
+                const active = widget.active
+                log('show_app_icon_switch activate via lambda: ' + active);
+            });
+
+
             this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
                 // Whether the GtkSwitch widget is in its on or off state.
                 const active = widget.active

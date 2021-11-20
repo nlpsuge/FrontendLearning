@@ -49,7 +49,7 @@
                           </packing>
                         </child>
                         <child>
-                          <object class="GtkSwitch" id="show_app_icon_switch1">
+                          <object class="GtkSwitch" id="show_app_icon_switch">
                             <property name="visible">True</property>
                             <property name="can-focus">True</property>
                             <property name="halign">end</property>
