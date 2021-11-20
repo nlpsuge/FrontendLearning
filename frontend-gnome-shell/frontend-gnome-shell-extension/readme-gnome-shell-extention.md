@@ -65,7 +65,7 @@ Once you are done defining you schema, you must compile it before it can be used
 glib-compile-schemas schemas/
 
 ls schemas
-org.gnome.shell.extensions.example-a-example.gschema.xml  org.gnome.shell.extensions.example-a-example.gschemas.compiled
+org.gnome.shell.extensions.example-a-example.gschema.xml gschemas.compiled
 ```
 
 # Integrating GSettings

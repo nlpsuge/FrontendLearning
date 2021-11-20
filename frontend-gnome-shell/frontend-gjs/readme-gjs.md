@@ -147,4 +147,7 @@ Subclassing is a convenient way to extend most GObject classes, allowing you to 
 
 Every class of GObject has a **globally unique GType** and so each subclass must be registered using the GObject.registerClass() function.
 
-## 
+# Signal
+GObjects support a signaling system, similar to events and EventListeners in the JavaScript Web API.
+
+Signals are connected by calling the connect() method, which returns a handler ID that is always truthy. Signals are disconnected by passing that ID to disconnect().
