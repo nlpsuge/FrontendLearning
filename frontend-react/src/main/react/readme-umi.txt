@@ -21,7 +21,7 @@ export default defineConfig({
             changeOrigin: true,
             pathRewrite: { "^/api": "" },
         },
-        "/async": {
+        "do-some": {
             target: "http://localhost:9881/",
             changeOrigin: true,
         },

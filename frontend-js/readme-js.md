@@ -1,7 +1,7 @@
-0.
+# Doc
 ES6 入门教程: https://es6.ruanyifeng.com/#README
 
-1.Fetch
+# Fetch
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 The Fetch API provides a JavaScript interface for accessing and manipulating 
 parts of the HTTP pipeline, such as requests and responses. It also provides a 
@@ -11,18 +11,18 @@ global fetch() method that provides an easy, logical way to fetch resources
 Fetch also provides a single logical place to define other HTTP-related concepts 
 such as CORS and extensions to HTTP.
 
-2.TODO Template literals (Template strings) / 模板字面量 / 模板字符串 ES6
+# TODO Template literals (Template strings) / 模板字面量 / 模板字符串 ES6
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
 Template literals are literals delimited with backticks (`), 
 allowing embedded expressions called substitutions.
 
-3.Promises
+# Promises
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 A Promise is an object representing the eventual completion or failure of an asynchronous operation.
 
 Eg:
-
+``` js
 const myPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve('foo');
@@ -33,21 +33,23 @@ myPromise
   .then(handleResolvedA, handleRejectedA)
   .then(handleResolvedB, handleRejectedB)
   .then(handleResolvedC, handleRejectedC);
+```
 
-
-
-4.GET 拼接请求参数
+# GET 拼接请求参数
 https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
+
 https://stackoverflow.com/a/35491602
 
 
-4.1  nodejs querystring
+## nodejs querystring
+``` js
 var querystring = require('querystring')
 var data = { key: 'value' }
 querystring.stringify(data) // => 'key=value'
+```
 
-4.2
-https://nodejs.org/api/url.html#url_the_whatwg_url_api
+## https://nodejs.org/api/url.html#url_the_whatwg_url_api
+``` js
 const url = require('url');
 url.format({
   protocol: 'https',
@@ -61,29 +63,32 @@ url.format({
 
 // => 'https://example.com/some/path?page=1&format=json'
 
-url.format('http://localhost:9881/async/page/tasks', options)
+url.format('http://localhost:9881/some/page/do-something', options)
+```
 
-5. <input> type
+# <input> type
 https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
 
-6.merge objects
+# merge objects
 https://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
 
+``` js
 let merged = {...obj1, ...obj2};
+```
 
 There's no limit to the number of objects you can merge.
 Later properties overwrite earlier properties with the same name.
-
+``` js
 const allRules = {...obj1, ...obj2, ...obj3};
+```
 
-7.
-Remove a property without mutating the object
+# Remove a property without mutating the object
 https://flaviocopes.com/how-to-remove-object-property-javascript/
 
-8.
-6.变量展开 (rest spread) 和  从对象/数组中移除变量
-https://es6.ruanyifeng.com/#docs/array#含义
 
+# 变量展开 (rest spread) 和  从对象/数组中移除变量
+https://es6.ruanyifeng.com/#docs/array#含义
+``` js
 const form = {
 
   field1: 1111,
@@ -93,32 +98,33 @@ const form = {
 }
 const { field1, field2, field4, ...newForm } = this.form
 this.form = newForm
+```
 
 从 this.form 中移除了三个变量 field1 field2 field4
 
-8.1
-https://es6.ruanyifeng.com/#docs/object#扩展运算符
+## [扩展运算符](https://es6.ruanyifeng.com/#docs/object#扩展运算符)
 对象的扩展运算符（...）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。
 由于数组是特殊的对象，所以对象的扩展运算符也可以用于数组。
 
+``` js
 let aClone = { ...a };
 // 等同于
 let aClone = Object.assign({}, a);
+```
 
-9.柯里化 / Curring
+# 柯里化 / Curring
 Currying 是编译原理层面实现多参函数的一个技术
 只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数
 
 https://juejin.cn/post/6844903603266650125
 
-10.Date format
+# Date format
 
-11.import
+# import
 
-11.1
-Correct syntax to import constants in ES6
+## Correct syntax to import constants in ES6
 https://stackoverflow.com/questions/52048536/correct-syntax-to-import-constants-in-es6/52048583
-
+``` js
 constants.js:
 export const foo = 'foo'
 export const bar = 'bar'
@@ -127,24 +133,23 @@ anotherModule.js:
 import {foo, bar} from './constants'
 
 console.log(foo,bar)
+```
 
-11.2
-import xxx from 'xxx' VS import xxx from 'xxx'
+## import xxx from 'xxx' VS import xxx from 'xxx'
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 import { default as XxxModal } from './components/XxxModal';
 
 
-11.2.1
+###
 
 
 
+# 遍历 / iterating
 
-12.遍历
-
-12.1 遍历对象 for...in statement 不建议用于遍历数组
+## 遍历对象 for...in statement 不建议用于遍历数组
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
 Given that for...in is built for iterating object properties, not recommended for use with arrays
-
+``` js
 const object = { a: 1, b: 2, c: 3 };
 
 for (const property in object) {
@@ -159,13 +164,14 @@ const an_array = ['df', 'hg']
 for (let index in an_array) {
   console.log(index);
 }
+```
 
-12.2 遍历数组 for...of
+## 遍历数组 for...of
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
 The for...of statement creates a loop iterating over iterable objects, 
 including: built-in String, Array, array-like objects (e.g., arguments or 
 NodeList), TypedArray, Map, Set, and user-defined iterables.
-
+``` js
 const array1 = ['a', 'b', 'c'];
 for (const element of array1) {
   console.log(element);
@@ -184,10 +190,11 @@ for (let value of iterable) {
 // 11
 // 21
 // 31
+```
 
-
-13. Map
+# Map
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+``` js
 const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
 
 for (const entry of iterable) {
@@ -203,56 +210,59 @@ for (const [key, value] of iterable) {
 // 1
 // 2
 // 3
+```
 
-14.Array push()
+# Array push()
+``` js
 const fruits = ["Banana", "Orange", "Apple", "Mango"];
 fruits.push("Kiwi");   // Adds "Kiwi"
+```
 
-15.export default VS export named 
+# export default VS export named 
 https://24ways.org/2014/javascript-modules-the-es6-way/
 https://stackoverflow.com/questions/21117160/what-is-export-default-in-javascript
 
-16.module system
+# module system
 JavaScript admittedly has plenty of flaws, but one of the largest and most prominent is the lack of a module system: a way to split up your application into a series of smaller files that can depend on each other to function correctly.
 
-17.row / column merge
+# row / column merge
 https://developpaper.com/question/ant-table-row-merge/
 
-18.
-How to check whether a string contains a substring in JavaScript?
+
+# How to check whether a string contains a substring in JavaScript?
 https://stackoverflow.com/questions/1789945/how-to-check-whether-a-string-contains-a-substring-in-javascript
+
+``` js
 const string = "foo";
 const substring = "oo";
 
 console.log(string.includes(substring)); // true
+```
 
-19.
-expr1 || expr2
+# expr1 || expr2
 If expr1 can be converted to true, returns expr1; else, returns expr2.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
 
-20. 空对象判断
+# 空对象判断
 https://stackoverflow.com/a/679937
 
 If ECMAScript 5 support is available, you can use Object.keys()
+``` js
 Object.keys(obj).length === 0
 
+// see
 Utils.isEmptyObject()
+```
 
-
-21. push: Add elements to an array
+# push: Add elements to an array
+``` js
 const an_array = ['a', 'b']
 console.log(an_array)
 an_array.push('c')
 console.log(an_array)
+```
 
-
-
-
-
-
-
-
-
+# arrays.some()
+The some() method tests whether at least one element in the array passes the test implemented by the provided function.
 
