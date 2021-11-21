@@ -165,3 +165,15 @@ g_signal_connect (text_view->buffer, "notify::paste-target-list",
                   G_CALLBACK (gtk_text_view_target_list_notify),
                   text_view)
 ``
+
+# [Shell.Global](https://gjs-docs.gnome.org/shell01~0.1_api/shell.global)
+
+## Shell.Global.get()
+Gets the singleton global object that represents the desktop.
+
+## Shell.Global.get_current_time()
+Gets the singleton global object that represents the desktop.
+
+(Number) — the current X server time from the current Clutter, Gdk, or X
+event. 
+
