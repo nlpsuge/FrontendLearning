@@ -46,3 +46,9 @@ code --install-extension=wmaurer.change-case
 If only one word is selected, the extension.changeCase.commands command gives you a preview of each option.
 
 
+## ESLint
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+``` Bash
+code --install-extension=dbaeumer.vscode-eslint
+```

@@ -5,6 +5,10 @@ https://gjs.guide/guides/gtk/3/01-basics.html#what-is-gtk
 
 https://docs.w3cub.com/gtk~4.0/
 
+[Building a GTK+ Application](https://gjs.guide/guides/gtk/3/10-building-app.html#using-gtk-application)
+
+[Setting Up Your Application Development Environment - Using GNOME Builder](https://gjs.guide/guides/gtk/3/12-app-dev.html#using-gnome-builder)
+
 # Getting started with GTK
 [Getting started with GTK](https://docs.gtk.org/gtk4/getting_started.html)
 

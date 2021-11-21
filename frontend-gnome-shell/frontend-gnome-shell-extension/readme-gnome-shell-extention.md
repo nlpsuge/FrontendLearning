@@ -59,7 +59,7 @@ And copy && paste those content:
 ```
 Change the GSchema ID and path for your needs.
 
-# Compiling the schema
+## Compiling the schema
 Once you are done defining you schema, you must compile it before it can be used:
 ```Bash
 glib-compile-schemas schemas/
@@ -68,7 +68,7 @@ ls schemas
 org.gnome.shell.extensions.example-a-example.gschema.xml gschemas.compiled
 ```
 
-# Integrating GSettings
+## Integrating GSettings
 [Integrating GSettings](https://gjs.guide/extensions/development/preferences.html#integrating-gsettings)
 
 Use `ExtensionUtils.getSettings('org.gnome.shell.extensions.example-a-example');` to get settings from the compiled gschema.
@@ -84,3 +84,9 @@ this.settings.bind(
 ```
 to bind GProperties (properties registered on a GObject class), **not working with JavaScript properties**, watch for the changes, for example changing it on Preferences, via `dconf` or `gsettings`.
 
+# [GNOME Shell Extensions Review Guidelines](https://gjs.guide/extensions/review-guidelines/review-guidelines.html)
+
+- Don't use classes or methods from the deprecated `Lang` module
+See: [Legacy Class Syntax - how to remove Lang](https://gjs.guide/guides/gjs/legacy-class-syntax.html#comparison-between-legacy-and-es6)
+
+- 
