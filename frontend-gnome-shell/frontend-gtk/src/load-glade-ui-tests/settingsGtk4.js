@@ -75,6 +75,12 @@ const Settings = GObject.registerClass(
                 log('The current value is: ' + scale.get_value());
             });
 
+            this._builder.get_object('hide_background_switch').connect('notify::active', (widget, value) => {
+                // Whether the GtkSwitch widget is in its on or off state.
+                const active = widget.active
+                log('hide_background_switch activate via lambda: ' + active);
+            });
+
         }
 
         run() {
