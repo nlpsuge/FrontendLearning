@@ -89,4 +89,35 @@ to bind GProperties (properties registered on a GObject class), **not working wi
 - Don't use classes or methods from the deprecated `Lang` module
 See: [Legacy Class Syntax - how to remove Lang](https://gjs.guide/guides/gjs/legacy-class-syntax.html#comparison-between-legacy-and-es6)
 
-- 
+# gnome-shell/js/ui/main.js
+Gnome Shell has exposed many internal functinon or objects via gnome-shell/js/ui/main.js
+
+For example, hide the background in the Overview:
+```js
+const Main = imports.ui.main;
+const overview_chilren = Main.layoutManager.overviewGroup.get_children();
+for (const child of overview_chilren) {
+    if (!child instanceof Overview.OverviewActor) {
+      continue;
+    }
+
+    const controls = child.controls;
+    const _workspacesDisplay = controls._workspacesDisplay;
+    const _workspacesViews = _workspacesDisplay._workspacesViews;
+    // Get the first one _workspacesView
+    const _workspacesView = _workspacesViews[0];
+    print('_workspaces._workspaces.length: ' + _workspacesView._workspaces.length);
+    // Iterate all underlying workspaces
+    for (const workspace of _workspacesView._workspaces) {
+        print('_workspacesView._workspaces._workspace: ' + workspace);
+        // Get the setting, `true` to hide the background, `fase` to show
+        const hide_background = _settings.get_boolean('hide-background');
+        if (hide_background) {
+            workspace._background.hide();
+        } else {
+            workspace._background.show();
+        }
+    }
+
+}
+```

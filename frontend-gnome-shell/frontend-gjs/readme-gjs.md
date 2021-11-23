@@ -5,6 +5,8 @@
 
 [gjs docs](https://gjs-docs.gnome.org/)
 
+[Language bindings based on GObject-Introspection](https://wiki.gnome.org/Projects/GObjectIntrospection/Users)
+
 [GJS: Javascript Bindings for GNOME](https://gitlab.gnome.org/GNOME/gjs/blob/master/doc/Home.md)
 
 [How do I get the monitor of an active window in GNOME?](https://stackoverflow.com/questions/50080430/how-do-i-get-the-monitor-of-an-active-window-in-gnome/50081217#50081217)
@@ -52,8 +54,6 @@ Lang.bind() was necessary to bind this to the function context **before** the av
 > -   [Bundled Modules](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md)
 > -   [Code Examples](https://gitlab.gnome.org/GNOME/gjs/-/tree/master/examples)
 
-# Bindings based on GObject-Introspection
-https://wiki.gnome.org/Projects/GObjectIntrospection/Users
 
 # GJS和GNOME Extension趟坑指南
 https://segmentfault.com/a/1190000005916625

@@ -266,3 +266,99 @@ console.log(an_array)
 # [arrays.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 The some() method tests whether at least one element in the array passes the test implemented by the provided function.
 
+# TODO prototype
+
+## apply(), call(), and bind() 
+https://www.freecodecamp.org/news/how-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90/
+
+### check if a function is a Function object
+``` js
+(function() {}).constructor === Function
+```
+
+Return true means it's a Function object.
+
+As functions are objects in JavaScript, their invocation is controlled by the apply, call, and bind methods.
+
+The following are the methods in the function prototype chain:
+
+- Function.prototype.apply()
+- Function.prototype.bind()
+- Function.prototype.call()
+
+
+## prototype
+
+# class
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+
+Classes are a template for creating objects. They encapsulate data with code to work on that data.
+
+An important difference between function declarations and class declarations is that while functions can be called in code that appears before they are defined, classes must be defined before they can be constructed (calling the class's constructor).
+
+## ways to define a class
+
+### using a `class` declaration
+```js
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+```
+
+### using class expression
+Class expressions can be named or unnamed.
+
+```js
+// unnamed
+let Rectangle = class {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+// output: "Rectangle"
+
+// named
+let Rectangle = class Rectangle2 {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+};
+console.log(Rectangle.name);
+// output: "Rectangle2"
+```
+
+Note: Class expressions must be declared before they can be used
+
+## Strict mode
+
+## 
+
+# getter / setter
+The get syntax binds an object property to a function that will be called when that property is looked up.
+
+using get the property will be defined on the instance's prototype
+``` js
+const obj = {
+  log: ['a', 'b', 'c'],
+  get latest() {
+    if (this.log.length === 0) {
+      return undefined;
+    }
+    return this.log[this.log.length - 1];
+  }
+};
+
+console.log(obj.latest);
+// expected output: "c"
+```
+
+Note:
+- get must have exactly zero parameters
+- set must have exactly one parameter
+
