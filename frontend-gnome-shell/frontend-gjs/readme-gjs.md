@@ -31,6 +31,8 @@ Modules are searched in paths defined in the array imports.searchPath. You can m
 imports.searchPath.push('/tmp/gnome-shell/js')
 ```
 
+Any symbols to be exported from a module must be defined with 'var'.
+
 ## Modules
 https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md
 

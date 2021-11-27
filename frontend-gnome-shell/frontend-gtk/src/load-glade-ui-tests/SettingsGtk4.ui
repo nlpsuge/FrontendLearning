@@ -32,7 +32,7 @@
                               <object class="GtkLabel" id="show_app_icon_multi_label_sensitive">
                                 <property name="hexpand">1</property>
                                 <property name="label" translatable="yes">Show app icons
-(This switch button is sensitive, so I cannot click)</property>
+(This switch button is not sensitive, so I cannot click)</property>
                                 <property name="use-markup">1</property>
                                 <property name="xalign">0</property>
                                 <layout>

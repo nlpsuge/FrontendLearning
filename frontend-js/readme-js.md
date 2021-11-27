@@ -271,6 +271,40 @@ The some() method tests whether at least one element in the array passes the tes
 ## apply(), call(), and bind() 
 https://www.freecodecamp.org/news/how-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90/
 
+### Function.prototype.apply() V.S. Function.prototype.call() 
+Note that when using the apply() function the parameter must be placed in an array. 
+Call() accepts both an array of parameters and a parameter itself. 
+Both are great tools for borrowing functions in JavaScript.
+
+### Function.prototype.bind()
+https://www.codingame.com/playgrounds/9799/learn-solve-call-apply-and-bind-methods-in-javascript
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+
+The simplest use of `bind()` is to make a function that, no matter how it is called, is called with a particular `this` value.
+
+``` js
+this.x = 9;    // 'this' refers to global 'window' object here in a browser
+const module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+module.getX();
+//  returns 81
+
+const retrieveX = module.getX;
+retrieveX();
+//  returns 9; the function gets invoked at the global scope
+
+//  Create a new function with 'this' bound to module
+//  New programmers might confuse the
+//  global variable 'x' with module's property 'x'
+const boundGetX = retrieveX.bind(module);
+boundGetX();
+//  returns 81
+```
+
 ### check if a function is a Function object
 ``` js
 (function() {}).constructor === Function
@@ -339,7 +373,7 @@ Note: Class expressions must be declared before they can be used
 
 ## 
 
-# getter / setter
+## getter / setter
 The get syntax binds an object property to a function that will be called when that property is looked up.
 
 using get the property will be defined on the instance's prototype
