@@ -52,3 +52,15 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 ``` Bash
 code --install-extension=dbaeumer.vscode-eslint
 ```
+
+## Visual Studio IntelliCode
+https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode
+``` Bash
+code --install-extension=VisualStudioExptTeam.vscodeintellicode
+```
+
+### Pylance
+https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance
+``` Bash
+code --install-extension=ms-python.vscode-pylance
+```
