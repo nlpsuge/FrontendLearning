@@ -121,3 +121,8 @@ for (const child of overview_chilren) {
 
 }
 ```
+# Run command in the background
+``` js
+const command = 'gnome-terminal';
+Util.trySpawnCommandLine(command); // calling GLib.spawn_async()
+```
