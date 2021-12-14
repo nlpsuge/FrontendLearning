@@ -179,3 +179,6 @@ Gets the singleton global object that represents the desktop.
 (Number) — the current X server time from the current Clutter, Gdk, or X
 event. 
 
+# Subprocess - running command in the background
+https://gjs.guide/guides/gio/subprocesses.html#gsubprocess
+
