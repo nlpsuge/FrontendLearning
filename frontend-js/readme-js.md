@@ -396,3 +396,22 @@ Note:
 - get must have exactly zero parameters
 - set must have exactly one parameter
 
+# [Get the name of an object's type](https://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class)
+``` js
+function Foo() {}
+var foo = new Foo();
+
+typeof Foo;             // == "function"
+typeof foo;             // == "object"
+
+foo instanceof Foo;     // == true
+foo.constructor.name;   // == "Foo"
+Foo.name                // == "Foo"    
+
+Foo.prototype.isPrototypeOf(foo);   // == true
+
+Foo.prototype.bar = function (x) {return x+x;};
+foo.bar(21);            // == 42
+```
+Note: don't rely on constructor.name if your code is being minified. The function name is going to change arbitrarily.
+
