@@ -415,3 +415,29 @@ foo.bar(21);            // == 42
 ```
 Note: don't rely on constructor.name if your code is being minified. The function name is going to change arbitrarily.
 
+# Triple Equals(===) V.S. Double Equals(==)
+See: https://codeburst.io/javascript-double-equals-vs-triple-equals-61d4ce5a121a
+
+## Triple Equals
+When using triple equals === in JavaScript, we are testing for strict equality. **This means both the type and the value**
+we are comparing have to be the same.
+'hello world' === 'hello world' // true (Both Strings, equal values)
+true === true // true (Both Booleans, equal values)
+
+77 === '77' // false (Number v. String)
+false === 0 // false (Different type and different value)
+
+
+# Double Equals
+When using double equals in JavaScript we are testing for loose equality. Double equals also performs type coercion.
+Type coercion means that **two values are compared only after attempting to convert them into a common type.**
+
+77 == '77' // true
+false === 0 // false (Different type and different value)
+false == 0 // true
+
+Okay, so why does false == 0 in JavaScript? It’s complex, but it’s because in JavaScript 0 is a [falsy value].
+
+Type coercion will actually convert our zero into a false boolean, then false is equal to false.
+
+#
