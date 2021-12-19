@@ -473,4 +473,32 @@ var obj = {
 JSON.stringify(obj);
 ```
 
+# Map
+[Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+```js
+const map1 = new Map();
+map1.set('key1', 'value1');
+map1.set('key2', 'value2');
+map1.set('key2', 'value3');
+map1.set('key3', 'value3');
+map1.set('key4', 'value4');
 
+map1.has('key1'); // true
+map1.forEach((v, k) => {
+  console.log(k);
+});
+map1.forEach((v, k) => {
+  console.log(`${k}: ${v}`);
+});
+
+for (const [k, v] of map1) {
+  console.log(`${k}: ${v}`);
+}
+
+// "value3"
+console.log(map1.get('key2'));
+// true
+console.log(map1.delete('key2'));
+// undefined
+console.log(map1.get('key2'));
+```
