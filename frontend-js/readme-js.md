@@ -118,8 +118,6 @@ Currying 是编译原理层面实现多参函数的一个技术
 
 https://juejin.cn/post/6844903603266650125
 
-# Date format
-
 # import
 
 ## Correct syntax to import constants in ES6
@@ -212,12 +210,6 @@ for (const [key, value] of iterable) {
 // 3
 ```
 
-# Array push()
-``` js
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.push("Kiwi");   // Adds "Kiwi"
-```
-
 # export default VS export named 
 https://24ways.org/2014/javascript-modules-the-es6-way/
 https://stackoverflow.com/questions/21117160/what-is-export-default-in-javascript
@@ -255,12 +247,17 @@ Object.keys(obj).length === 0
 Utils.isEmptyObject()
 ```
 
-# push: Add elements to an array
+# Array push(): Add / Append elements to an array
 ``` js
 const an_array = ['a', 'b']
 console.log(an_array)
 an_array.push('c')
 console.log(an_array)
+```
+
+``` js
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");   // Adds "Kiwi"
 ```
 
 # [arrays.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
@@ -440,4 +437,40 @@ Okay, so why does false == 0 in JavaScript? It’s complex, but it’s because i
 
 Type coercion will actually convert our zero into a false boolean, then false is equal to false.
 
-#
+# Split a string according to any whitespace, and discard empty strings from the result, like `string.split()` in Python
+[Splitting string by whitespace, without empty elements?](https://stackoverflow.com/questions/9141951/splitting-string-by-whitespace-without-empty-elements)
+```js
+str = ' sss xxx  fff fd  56  '
+str.split(' ').filter(function(i){return i})
+// With ES6
+str.split(' ').filter(i => i)
+```
+filter() method creates a new array with all elements that pass the test implemented by the provided function. If('') is false, filter function filter strip them in the final result.
+
+
+# Convert array to string and add separator
+[Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
+```js
+const elements = ['Fire', 'Air', 'Water'];
+console.log(elements.join());
+// expected output: "Fire,Air,Water"
+
+console.log(elements.join(''));
+// expected output: "FireAirWater"
+
+console.log(elements.join('-'));
+// expected output: "Fire-Air-Water"
+
+
+```
+
+# [Converting an object to a string](https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string)
+``` js
+var obj = {
+  name: 'myObj'
+};
+
+JSON.stringify(obj);
+```
+
+
