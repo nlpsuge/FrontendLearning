@@ -126,3 +126,31 @@ for (const child of overview_chilren) {
 const command = 'gnome-terminal';
 Util.trySpawnCommandLine(command); // calling GLib.spawn_async()
 ```
+
+# Icon
+[Themed Icons](https://developer.gnome.org/GNotification/documentation/tutorials/themed-icons.html)
+
+## Symbolic icons
+
+Symbolic icons have a simple form, and can be used much like text. They will **be recolored according to the context in which they are used**. By convention, symbolic icons are named with a -symbolic suffix.
+
+### Use customize symbolic icon
+[Custom Icon for Gnome Shell Extension in Top Panel not visible](https://stackoverflow.com/questions/61243243/custom-icon-for-gnome-shell-extension-in-top-panel-not-visible)
+
+``` 
+const { St, Gio } = imports.gi;
+
+const ExtensionUtils = imports.misc.extensionUtils;
+const Me = ExtensionUtils.getCurrentExtension();
+
+// 1. Presume there is a icon named 'restore-symbolic.svg' in 'icons' folder
+// 2. Use '-symbolic' icons to allow automatic theme aware re-colorization of the icons.
+let iconPath = `${Me.path}/icons/restore-symbolic.svg`;
+let icon = new St.Icon({
+    // https://gjs-docs.gnome.org/gio20~2.66p/gio.icon#function-new_for_string
+    // https://gjs-docs.gnome.org/gio20~2.66p/gio.icon#method-to_string
+    gicon: Gio.icon_new_for_string(`${iconPath}`),
+    style_class: 'system-status-icon'
+});
+```
+
