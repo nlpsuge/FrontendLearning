@@ -159,24 +159,6 @@ console.log(o.ll);
 25.
 js 中 中括号 [] 表示数组
 
-26. Truthy vs Falsy
-https://developer.mozilla.org/en-US/docs/Glossary/Truthy
-https://developer.mozilla.org/en-US/docs/Glossary/Falsy
-
-Truthy
-true
-[]
-{}
-3
-"0"
-"false"
-
-
-Falsy:
-false
-0 / 0.0 / 0x0
--0 / -0.0 / -0x0
-
 26.
 简单介绍一下 React 的工作机制
 https://www.infoq.cn/article/oczmpgbj*pwpgmkfr4an

@@ -537,3 +537,23 @@ for (const [k, v] of map1) {
 
 ```
 
+# Truthy vs Falsy
+https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+
+Truthy
+true
+[]
+{}
+3
+"0"
+"false"
+
+
+Falsy:
+false
+0 / 0.0 / 0x0
+-0 / -0.0 / -0x0
+
+## (if(x) vs if(x==true))[https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true]
+`if(x)` checks if x is Truthy where as `if(x==true)` checks if the Boolean value of x is true.
