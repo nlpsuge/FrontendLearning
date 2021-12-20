@@ -502,3 +502,38 @@ console.log(map1.delete('key2'));
 // undefined
 console.log(map1.get('key2'));
 ```
+
+```js
+const map1 = new Map();
+map1.set('key1', {v1: 'value1'});
+map1.set('key2', {v2: 'value2'});
+map1.set('key2', {v2: 'value3'});
+map1.set('key3', {v3: 'value3'});
+map1.set('key4', {v4: 'value4', v41: ['filed-value-v41']});
+
+for (const [k, v] of map1) {
+  console.log(`${k}: ${JSON.stringify(v)}`);
+}
+
+const v3 = map1.get('key3');
+v3.v31 = 'value31';
+
+const v4 = map1.get('key4');
+if (v4) {
+  v4.v41.push('filed-value-v41-pushed');
+}
+
+for (const [k, v] of map1) {
+  if (k === 'key3') {
+    // Data Changed: 'key3: {"v3":"value3","v31":"value31"}'
+    console.log(`${k}: ${JSON.stringify(v)}`);
+  }
+  if (k === 'key4') {
+    // Data Changed： 'key4: {"v4":"value4","v41":["filed-value-v41","filed-value-v41-pushed"]}'
+    console.log(`${k}: ${JSON.stringify(v)}`);
+  }
+}
+
+
+```
+
