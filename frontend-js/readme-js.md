@@ -164,32 +164,6 @@ for (let index in an_array) {
 }
 ```
 
-## 遍历数组 for...of
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
-The for...of statement creates a loop iterating over iterable objects, 
-including: built-in String, Array, array-like objects (e.g., arguments or 
-NodeList), TypedArray, Map, Set, and user-defined iterables.
-``` js
-const array1 = ['a', 'b', 'c'];
-for (const element of array1) {
-  console.log(element);
-}
-
-// expected output: "a"
-// expected output: "b"
-// expected output: "c"
-
-// You can use let instead of const too, if you reassign the variable inside the block.
-const iterable = [10, 20, 30];
-for (let value of iterable) {
-  value += 1;
-  console.log(value);
-}
-// 11
-// 21
-// 31
-```
-
 # Map
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
 ``` js
@@ -246,22 +220,6 @@ Object.keys(obj).length === 0
 // see
 Utils.isEmptyObject()
 ```
-
-# Array push(): Add / Append elements to an array
-``` js
-const an_array = ['a', 'b']
-console.log(an_array)
-an_array.push('c')
-console.log(an_array)
-```
-
-``` js
-const fruits = ["Banana", "Orange", "Apple", "Mango"];
-fruits.push("Kiwi");   // Adds "Kiwi"
-```
-
-# [arrays.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
-The some() method tests whether at least one element in the array passes the test implemented by the provided function.
 
 # TODO prototype
 
@@ -448,23 +406,7 @@ str.split(' ').filter(i => i)
 filter() method creates a new array with all elements that pass the test implemented by the provided function. If('') is false, filter function filter strip them in the final result.
 
 
-# Convert array to string and add separator
-[Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
-```js
-const elements = ['Fire', 'Air', 'Water'];
-console.log(elements.join());
-// expected output: "Fire,Air,Water"
-
-console.log(elements.join(''));
-// expected output: "FireAirWater"
-
-console.log(elements.join('-'));
-// expected output: "Fire-Air-Water"
-
-
-```
-
-# [Converting an object to a string](https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string)
+# [Converting an object to a json/string](https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string)
 ``` js
 var obj = {
   name: 'myObj'
@@ -557,3 +499,12 @@ false
 
 ## (if(x) vs if(x==true))[https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true]
 `if(x)` checks if x is Truthy where as `if(x==true)` checks if the Boolean value of x is true.
+```js
+if ({}) {
+  console.log('{} is truthy');
+}
+
+if ([]) {
+  console.log('[] is truthy');
+}
+```
