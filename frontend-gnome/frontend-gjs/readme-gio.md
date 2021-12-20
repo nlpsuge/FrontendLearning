@@ -5,3 +5,10 @@
 [Main Categories](https://specifications.freedesktop.org/menu-spec/latest/apa.html#main-category-registry)
 [Additional Categories](https://specifications.freedesktop.org/menu-spec/latest/apas02.html)
 
+
+# List files in directory
+[File.enumerate_children()](https://gjs-docs.gnome.org/gio20~2.66p/gio.file#method-enumerate_children)
+
+See: [gioListDirectory.js](src/gioListDirectory.js)
+See: [gnome shell - misc/fileUtils.js](https://gitlab.gnome.org/GNOME/gnome-shell/-/blob/main/js/misc/fileUtils.js)
+
