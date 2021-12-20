@@ -61,7 +61,6 @@ console.log(elements.join('-'));
 
 [How to Check if a JavaScript Array is Empty or Not with .length](https://www.freecodecamp.org/news/check-if-javascript-array-is-empty-or-not-with-length/)
 
-> How to Check if a JavaScript Array is Empty or Not with .length
 ```js
 if (!Array.isArray(array) || !array.length) {
     console.log('Empty array');
