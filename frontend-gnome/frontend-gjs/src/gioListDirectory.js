@@ -25,7 +25,7 @@ function listPath(test_path, callback) {
             Gio.FileQueryInfoFlags.NONE,
             null);
     } catch(e) {
-        logError(`Failed to list directory ${test_path}`);
+        logError(e,`Failed to list directory ${test_path}`);
         fileEnumerator = null;
     }
 
@@ -36,7 +36,7 @@ function listPath(test_path, callback) {
             empty = false;
             // {} Empty
             // log(JSON.stringify(info));
-            const fileName = info.get_name();
+            n
             log(fileName);
             // a new Gio.File which refers to the file named by info in the source directory of this
             const file = fileEnumerator.get_child(info);
