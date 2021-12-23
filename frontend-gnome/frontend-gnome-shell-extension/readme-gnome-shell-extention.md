@@ -4,6 +4,11 @@
 # [How to port Extensions to GNOME Shell 40](https://gjs.guide/extensions/upgrading/gnome-shell-40.html#contents)
 
 
+# Note: can't use GTK widgets in the Gnome Shell, but it has its own toolkit in the form of St: https://gjs-docs.gnome.org/st10~1.0_api/
+
+[Sharing code between a GTK/GJS App and a Gnome Shell Extension](https://stackoverflow.com/questions/68275153/sharing-code-between-a-gtk-gjs-app-and-a-gnome-shell-extension)
+
+[Gnome shell extension: how to do change panelMenu button icons?](https://discourse.gnome.org/t/gnome-shell-extension-how-to-do-change-panelmenu-button-icons/3381)
 
 # Open the preference dialog from the command line directly
 ``` Bash

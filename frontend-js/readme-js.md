@@ -325,6 +325,11 @@ console.log(Rectangle.name);
 Note: Class expressions must be declared before they can be used
 
 ## Strict mode
+(JavaScript Use Strict)[https://www.w3schools.com/js/js_strict.asp]
+
+In strict mode, any assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object, will throw an error. 
+
+The "use strict" directive is only recognized at the **beginning** of a script or a function.
 
 ## 
 
