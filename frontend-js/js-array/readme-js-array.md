@@ -67,3 +67,17 @@ if (!Array.isArray(array) || !array.length) {
 }
 ```
 
+# [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+The parameter is a compareFunction:
+|compareFunction(a, b) return value |	sort order|
+|--|--|
+| > 0 |sort b before a|
+| < 0 |sort a before b|
+|=== 0|keep original order of a and b|
+
+
+[Javascript sort array of objects by a boolean property](https://stackoverflow.com/questions/17387435/javascript-sort-array-of-objects-by-a-boolean-property)
+
+just if you want it sorted the other way, swap the places of a and b in the sort function, instead of calling `reverse()`
+
