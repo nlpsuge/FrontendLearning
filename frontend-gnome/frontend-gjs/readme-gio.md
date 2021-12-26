@@ -1,3 +1,8 @@
+# Doc
+https://gjs-docs.gnome.org/gio20~2.66p/
+
+https://valadoc.org/gio-2.0/index.htm
+
 # [Gio.DesktopAppInfo](https://lazka.github.io/pgi-docs/Gio-2.0/structs/DesktopAppInfo.html#Gio.DesktopAppInfo.set_desktop_env)
 
 ## get_categories()
