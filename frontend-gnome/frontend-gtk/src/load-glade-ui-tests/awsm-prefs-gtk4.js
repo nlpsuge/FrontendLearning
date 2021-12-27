@@ -4,11 +4,6 @@
 
 imports.gi.versions.Gtk = "4.0"
 const { Gtk, GObject, Gio } = imports.gi;
-const Lang = imports.lang;
-
-const DEFAULT_APP_ICON_POSITION = 'Bottom';
-const DEFAULT_DO_NOT_SHOW_APP_ICON_WHEN_FULLSCREEN = true;
-const DEFAULT_WINDOW_ACTIVE_SIZE_INC_RANGE = [5, 10, 15, 20];
 
 const Prefs = GObject.registerClass(
     {
