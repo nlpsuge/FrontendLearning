@@ -502,7 +502,7 @@ false
 0 / 0.0 / 0x0
 -0 / -0.0 / -0x0
 
-## (if(x) vs if(x==true))[https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true]
+## [if(x) vs if(x==true)](https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true)
 `if(x)` checks if x is Truthy where as `if(x==true)` checks if the Boolean value of x is true.
 ```js
 if ({}) {
@@ -512,4 +512,16 @@ if ({}) {
 if ([]) {
   console.log('[] is truthy');
 }
+```
+
+# string match: [RegExp.prototype.test\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+
+```js
+new RegExp('text').test('search text')
+
+const str = 'hello world!';
+const result = /^hello/.test(str);
+
+console.log(result); // true
+
 ```
