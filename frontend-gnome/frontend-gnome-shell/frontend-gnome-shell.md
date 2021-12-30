@@ -1,0 +1,2 @@
+# telepathyClient.js => ChatMessage.newFromTpMessage
+

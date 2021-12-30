@@ -420,6 +420,25 @@ var obj = {
 JSON.stringify(obj);
 ```
 
+## Format / beautify json
+[Parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#parameters)
+
+``` js
+JSON.stringify(value, replacer, space)
+```
+
+``` js
+JSON.stringify({a: 'a', b: 2},
+null,
+// Indented 4 spaces
+4);
+
+JSON.stringify({a: 'a', b: 2},
+null,
+// Indented with tab
+'\t');
+```
+
 # Map
 [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
 ```js
@@ -525,3 +544,5 @@ const result = /^hello/.test(str);
 console.log(result); // true
 
 ```
+
+#
