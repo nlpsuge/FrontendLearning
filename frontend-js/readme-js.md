@@ -461,6 +461,10 @@ for (const [k, v] of map1) {
   console.log(`${k}: ${v}`);
 }
 
+map1.keys().forEach(k => {
+  console.log(k);
+});
+
 // "value3"
 console.log(map1.get('key2'));
 // true
@@ -500,7 +504,22 @@ for (const [k, v] of map1) {
   }
 }
 
+```
+## Map to json, and vice versa
+[How do you JSON.stringify an ES6 Map?](https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map)
 
+``` js
+const map = new Map();
+map.set('key1', {v1: 'value1'});
+map.set('key2', {v2: 'value2'});
+
+const jsonText = JSON.stringify(Array.from(map.entries()));
+console.log(jsonText);
+
+const toMap = new Map(JSON.parse(jsonText));
+for (const [key, value] of toMap) {
+    console.log(`${key}: ${JSON.stringify(value)}`);
+}
 ```
 
 # Truthy vs Falsy

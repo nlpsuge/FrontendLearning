@@ -22,6 +22,23 @@ for (let value of iterable) {
 // 11
 // 21
 // 31
+
+const array2 = ['a', 'b', 'c'];
+for (let i = 0; i < array2.length; i++) {
+  console.log(i, array2[i]);
+}
+
+// 0 a
+// 1 b
+// 2 c
+
+delete array2[1];
+
+for (let i = 0; i < array2.length; i++) {
+  console.log(i, array2[i]);
+}
+
+
 ```
 
 # Array push(): Add / Append elements to an array

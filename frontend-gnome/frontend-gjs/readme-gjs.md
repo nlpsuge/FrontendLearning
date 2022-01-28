@@ -184,3 +184,5 @@ event.
 # Subprocess - running command in the background
 https://gjs.guide/guides/gio/subprocesses.html#gsubprocess
 
+# TODO [Asynchronous Programming in GJS | Andy Holmes](https://www.andyholmes.ca/articles/asynchronous-programming-in-gjs.html)
+
