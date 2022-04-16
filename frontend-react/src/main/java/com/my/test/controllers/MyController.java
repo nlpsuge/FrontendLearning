@@ -30,7 +30,7 @@ public class MyController {
         Map<Object, Object> map = new HashMap<>();
         map.put("para1", para1);
         map.put("para2", para2);
-        map.put("r1", "hello word!");
+        map.put("r1", "hello world!");
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(map);
     }
@@ -44,7 +44,7 @@ public class MyController {
         log.error("testing in the controller: para: {}", reqDTO);
         Map<Object, Object> map = new HashMap<>();
         map.put("para1", reqDTO);
-        map.put("r1", "hello word!");
+        map.put("r1", "hello world!");
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(map);
     }
@@ -56,7 +56,7 @@ public class MyController {
         log.error("testing in the controller: aJpgKey: {}", aJpgKey);
         Map<Object, Object> map = new HashMap<>();
         map.put("aJpgKey", aJpgKey);
-        map.put("r1", "hello word!");
+        map.put("r1", "hello world!");
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(map);
     }
