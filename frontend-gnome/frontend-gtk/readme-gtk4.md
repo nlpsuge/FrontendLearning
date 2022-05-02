@@ -102,5 +102,13 @@ Create a binding between the `key` in the `settings` object and the property `pr
 
 Note that the lifecycle of the binding is tied to object, and that you can have only one binding per object property. If you bind the same property twice on the same object, the second binding overrides the first one.
 
+# GtkTreeView
+
+## How to hide a GtkTreeViewColumn in a GtkTreeView?
+
+* [Use col.set_visible(FALSE) where col is a Gtk.TreeViewColumn().](https://pygtk.daa.com.narkive.com/CVYaqPZX/hide-a-column-in-a-treeview)
+* Click the GtkTreeViewColumn item in the Glade and toggle the `Visible` in the `Common tab`.
+
+
 
 
