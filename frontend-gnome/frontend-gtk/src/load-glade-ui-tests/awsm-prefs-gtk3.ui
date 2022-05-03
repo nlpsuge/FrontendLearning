@@ -105,6 +105,9 @@
             <property name="position">0</property>
           </packing>
         </child>
+        <child>
+          <placeholder/>
+        </child>
       </object>
     </child>
     <child type="tab">
@@ -432,7 +435,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkScrolledWindow">
+                  <object class="GtkScrolledWindow" id="close_rule_scrolled_window">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="shadow-type">in</property>
@@ -451,6 +454,15 @@
                             <property name="title" translatable="yes">Enabled</property>
                             <property name="clickable">True</property>
                             <property name="reorderable">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext_enabled">
+                                <property name="editable">True</property>
+                                <signal name="edited" handler="on_cell_edited" swapped="no"/>
+                              </object>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
                           </object>
                         </child>
                         <child>
@@ -458,6 +470,15 @@
                             <property name="resizable">True</property>
                             <property name="title" translatable="yes">App Name</property>
                             <property name="reorderable">True</property>
+                            <child>
+                              <object class="GtkCellRendererText" id="cellrenderertext_app_name">
+                                <property name="editable">True</property>
+                                <signal name="edited" handler="on_cell_edited" swapped="no"/>
+                              </object>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
                           </object>
                         </child>
                         <child>
@@ -482,6 +503,14 @@
                             <property name="title" translatable="yes">Rule</property>
                             <property name="clickable">True</property>
                             <property name="reorderable">True</property>
+                            <child>
+                              <object class="GtkCellRendererAccel" id="cellrenderertext_close_rule">
+                                <property name="editable">True</property>
+                              </object>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
+                            </child>
                           </object>
                         </child>
                       </object>

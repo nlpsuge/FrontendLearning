@@ -109,6 +109,13 @@ Note that the lifecycle of the binding is tied to object, and that you can have 
 * [Use col.set_visible(FALSE) where col is a Gtk.TreeViewColumn().](https://pygtk.daa.com.narkive.com/CVYaqPZX/hide-a-column-in-a-treeview)
 * Click the GtkTreeViewColumn item in the Glade and toggle the `Visible` in the `Common tab`.
 
+## [CellRendererButton: Have a clickable button in a TreeView column](https://discourse.gnome.org/t/cellrendererbutton-have-a-clickable-button-in-a-treeview-column/2103)
+
+TreeView columns are made of cell renderers, and **cell renderers are not widgets by design**—and only widgets can deal with events like button press/release, and enter/leave events. So, the short answer is: you cannot put a GtkButton into a GtkTreeView.
+
+To use a GtkListBox widget instead is an alternative.
+
+
 
 
 
