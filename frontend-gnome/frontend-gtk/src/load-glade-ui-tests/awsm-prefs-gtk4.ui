@@ -55,7 +55,26 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkListBox" id="close_by_rules_list_box">
+                      <object class="GtkScrolledWindow" id="close_rule_listbox_scrolledwindow">
+                        <property name="focusable">1</property>
+                        <property name="child">
+                          <object class="GtkViewport">
+                            <property name="child">
+                              <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <object class="GtkListBox" id="close_by_rules_list_box"/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                            </property>
+                          </object>
+                        </property>
                         <layout>
                           <property name="column">0</property>
                           <property name="row">1</property>
@@ -83,6 +102,9 @@
                   </object>
                 </property>
               </object>
+            </child>
+            <child>
+              <placeholder/>
             </child>
           </object>
         </property>
@@ -333,7 +355,7 @@
                       </object>
                     </child>
                     <child>
-                      <object class="GtkScrolledWindow">
+                      <object class="GtkScrolledWindow" id="close_rule_treeview_scrolled_window">
                         <property name="focusable">1</property>
                         <property name="child">
                           <object class="GtkTreeView" id="close_rule_tree_view">
@@ -349,6 +371,15 @@
                                 <property name="title" translatable="yes">Enabled</property>
                                 <property name="clickable">1</property>
                                 <property name="reorderable">1</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cellrenderertext_enabled">
+                                    <property name="editable">1</property>
+                                    <!-- <signal name="edited" handler="on_cell_edited" swapped="no"/> -->
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
                               </object>
                             </child>
                             <child>
@@ -356,6 +387,15 @@
                                 <property name="resizable">1</property>
                                 <property name="title" translatable="yes">App Name</property>
                                 <property name="reorderable">1</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cellrenderertext_app_name">
+                                    <property name="editable">1</property>
+                                    <!-- <signal name="edited" handler="on_cell_edited" swapped="no"/> -->
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
                               </object>
                             </child>
                             <child>
@@ -380,6 +420,14 @@
                                 <property name="title" translatable="yes">Rule</property>
                                 <property name="clickable">1</property>
                                 <property name="reorderable">1</property>
+                                <child>
+                                  <object class="GtkCellRendererAccel" id="cellrenderertext_close_rule">
+                                    <property name="editable">1</property>
+                                  </object>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
                               </object>
                             </child>
                           </object>
@@ -401,7 +449,7 @@
                             <property name="focusable">1</property>
                             <property name="receives-default">1</property>
                           </object>
-                          
+
                         </child>
                         <child>
                           <placeholder/>
