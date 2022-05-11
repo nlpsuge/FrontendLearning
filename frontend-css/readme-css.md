@@ -36,3 +36,9 @@ An element can take multiple classes:
   <p>I'm bold and verdana.</p>
 </div>
 ```
+
+# [`display: "none";` vs `visibility: "hidden";`](https://www.geeksforgeeks.org/what-is-the-difference-between-visibilityhidden-and-displaynone/)
+The `display: "none";` property is used to specify whether an element exists or not on the website.
+
+The difference between display: “none”; and visibility: “hidden”; right from the name itself we can tell the difference as display: “none”; completely gets rids of the tag, as it had never existed in the HTML page whereas visibility: “hidden”; just makes the tag invisible, it will still on the HTML page occupying space it’s just invisible.
+
