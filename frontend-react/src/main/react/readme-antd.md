@@ -125,11 +125,12 @@ ReactDOM.render(
 ```js
 const hide = message.loading('Loading...',0)
 API.getUser(id).then(res => {
-  // Hie the message asynchronously
-  // Method 1
+  // Two methods to hide the message(s)
+  
+  // Method 1, hide the message asynchronously
   hide()
 
-  // Method 2. Destory all messages
+  // Method 2, destory all messages
   message.destroy();
 }
 ```
