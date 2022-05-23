@@ -569,20 +569,12 @@ console.log(result); // true
 
 ```
 
-# [?? - Nullish coalescing operator / double question mark operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator) 
+# [?.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+ The optional chaining operator (?.) enables you to read the value of a property located deep within a chain of connected objects without having to check that each reference in the chain is valid. 
 
-The nullish coalescing operator (??) is a logical operator that **returns its right-hand side operand when its left-hand side operand is null or undefined, and otherwise returns its left-hand side operand**.
-
-This can be seen as a special case of the logical OR (||) operator, which returns the right-hand side operand if the left operand is any falsy value, not only null or undefined. In other words, if you use || to provide some default value to another variable foo, you may encounter unexpected behaviors if you consider some falsy values as usable (e.g., '' or 0).
-
-``` js
-const foo = null ?? 'default string';
-console.log(foo);
-// expected output: "default string"
-
-const baz = 0 ?? 42;
-console.log(baz);
-// expected output: 0
-```
+ ```js
+ let nestedProp = obj.first?.second;
+ ```
+By using the ?. operator instead of just ., JavaScript knows to implicitly check to be sure obj.first is not null or undefined before attempting to access obj.first.second. **If obj.first is null or undefined, the expression automatically short-circuits, returning undefined.** 
 
 
