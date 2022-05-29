@@ -215,7 +215,8 @@ If expr1 can be converted to true, returns expr1; else, returns expr2.
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR
 
-# 空对象判断
+# Object
+## 空对象判断
 https://stackoverflow.com/a/679937
 
 If ECMAScript 5 support is available, you can use Object.keys()
@@ -224,6 +225,43 @@ Object.keys(obj).length === 0
 
 // see
 Utils.isEmptyObject()
+```
+
+## Get all properties and values of an Object and ordering
+https://stackoverflow.com/questions/679915/how-do-i-test-for-an-empty-javascript-object/679937#679937
+
+https://stackoverflow.com/questions/7306669/how-to-get-all-properties-values-of-a-javascript-object-without-knowing-the-key
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+
+``` js
+let anObj = { 100: 'a', 3:'3w', 20: 'b', 7: 'c', 'a': 'd2', 'c': 'c3', 'b': 'b5' };
+// Get properties
+// array-like object with random key ordering
+Object.keys(anObj); // console: 3,7,20,100,a,c,b
+
+for (let o in anObj) {console.log(o)} // 3,7,20,100,a,c,b
+
+// Get values
+Object.values(anObj); // 3w,c,b,a,d2,c3,b5
+```
+
+### Ordering
+[Object.getOwnPropertyNames() Description](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyNames#description)
+
+The ordering of the enumerable properties in the array is **consistent** with the ordering exposed by a for...in loop (or by Object.keys()) over the properties of the object.
+
+According to ES6, the **integer keys** of the object (both enumerable and non-enumerable) are added **in ascending order** to the array first, followed by the string keys in the order of insertion.
+
+## Delete a property from an Object
+
+```js
+const anObj = { 100: 'a', 3:'3w', 20: 'b', 7: 'c', 'a': 'd2', 'c': 'c3', 'b': 'b5' };
+console.log(anObj);
+delete anObj.c;
+delete anObj[100];
+console.log(anObj);
+
 ```
 
 # TODO prototype
@@ -569,4 +607,39 @@ console.log(result); // true
 
 ```
 
-#
+# !! - Double Bang, NOT NOT
+[JS Double Bang — or “The Not Operator Part !!”](https://medium.com/@edplatomail/js-double-bang-or-the-not-operator-part-40e55d089bf0)
+
+[What is the !! (not not) operator in JavaScript?](https://stackoverflow.com/questions/784929/what-is-the-not-not-operator-in-javascript)
+
+There is no !! operator in JS... there is only the single !
+
+Converts Object to boolean. If it was falsy (e.g. 0, null, undefined, etc.), it will be false, otherwise, true.
+
+```js
+!object  // inverted boolean
+!!object // non inverted boolean so true boolean representation
+```
+
+So !! is not an operator, it's just the ! operator twice.
+
+It may be simpler to do:
+
+```js
+Boolean(object) // boolean
+```
+
+# [Math.max()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
+
+If any one or more of the parameters cannot be converted into a number, NaN is returned. The result is -Infinity if no parameters are provided.
+
+```js
+// 19
+console.log(Math.max(1, 19, 2));
+const array1 = [1, 3, 2];
+// 3
+console.log(Math.max(...array1));
+```
+
+
+
