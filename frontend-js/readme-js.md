@@ -607,6 +607,15 @@ console.log(result); // true
 
 ```
 
+# [?.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+ The optional chaining operator (?.) enables you to read the value of a property located deep within a chain of connected objects without having to check that each reference in the chain is valid. 
+
+ ```js
+ let nestedProp = obj.first?.second;
+ ```
+By using the ?. operator instead of just ., JavaScript knows to implicitly check to be sure obj.first is not null or undefined before attempting to access obj.first.second. **If obj.first is null or undefined, the expression automatically short-circuits, returning undefined.** 
+
+
 # !! - Double Bang, NOT NOT
 [JS Double Bang — or “The Not Operator Part !!”](https://medium.com/@edplatomail/js-double-bang-or-the-not-operator-part-40e55d089bf0)
 
