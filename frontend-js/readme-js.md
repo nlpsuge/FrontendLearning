@@ -24,21 +24,67 @@ allowing embedded expressions called substitutions.
 
 # Promises
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#creating_a_promise_around_an_old_callback_api
+
+
 A Promise is an object representing the eventual completion or failure of an asynchronous operation.
+
+Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.
+
+
+[`Promise.resolve()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve) and [`Promise.reject()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject) are shortcuts to manually create an already resolved or rejected promise respectively. This can be useful at times.
 
 Eg:
 ``` js
-const myPromise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve('foo');
-  }, 300);
-});
+// using a resolved promise, the 'then' block will be triggered instantly,
+// but its handlers will be triggered asynchronously as demonstrated by the console.logs
+const resolvedProm = Promise.resolve(33);
+// =
+// const resolvedProm = new Promise(function(resolve){ resolve(33); });
 
-myPromise
-  .then(handleResolvedA, handleRejectedA)
-  .then(handleResolvedB, handleRejectedB)
-  .then(handleResolvedC, handleRejectedC);
+let thenProm = resolvedProm.then(value => {
+    console.log("this gets called after the end of the main stack. the value received and returned is: " + value);
+    return value;
+});
+// instantly logging the value of thenProm
+console.log(thenProm);
+
+
+// logs, in order:
+// Promise {[[PromiseStatus]]: "pending", [[PromiseValue]]: undefined}
+// "this gets called after the end of the main stack. the value received and returned is: 33"
 ```
+
+```js
+let p = new Promise((r) => {r(444)});
+p.then((v)=>{console.log(v)})
+r = await p;
+console.log('result ' + r)
+
+// logs:
+// 444
+// result 444
+
+
+const asyncFun = async function() {
+  let p = new Promise((r) => {r(444)});
+  p.then((v)=>{console.log(v)})
+  return p;
+}
+
+r = await asyncFun();
+console.log('result ' + r)
+
+// logs:
+// 444
+// result 444
+```
+# await
+`await` can only be used in a `async` function. 
+
 
 # GET 拼接请求参数
 https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
@@ -244,6 +290,28 @@ for (let o in anObj) {console.log(o)} // 3,7,20,100,a,c,b
 
 // Get values
 Object.values(anObj); // 3w,c,b,a,d2,c3,b5
+```
+
+## [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+
+```js
+Object.assign(target, ...sources)
+```
+
+This method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
+
+Properties in the target object are overwritten by properties in the sources if they have the same key. Later sources' properties overwrite earlier ones.
+
+Object.assign() does not throw on null or undefined sources.
+
+### Merging objects with same properties
+```js
+const o1 = { a: 1, b: 1, c: 1 };
+const o2 = { b: 2, c: 2 };
+const o3 = { c: 3 };
+
+const obj = Object.assign({}, o1, o2, o3);
+console.log(obj); // { a: 1, b: 2, c: 3 }
 ```
 
 ### Ordering
@@ -650,5 +718,32 @@ const array1 = [1, 3, 2];
 console.log(Math.max(...array1));
 ```
 
+# [Array merge](https://dmitripavlutin.com/javascript-merge-arrays/)
 
+## Merge using the spread operator
+```js
 
+const heroes = ['Batman', 'Superman'];
+const villains = ['Joker', 'Bane'];
+const all = [...heroes, ...villains];
+
+```
+
+### Merge using array.concat() method
+```js
+const heroes = ['Batman', 'Superman'];
+const villains = ['Joker', 'Bane'];
+// form 1
+const all1 = heroes.concat(villains);
+// Or form 2
+const all2 = [].concat(heroes, villains);
+all1; // ['Batman', 'Superman', 'Joker', 'Bane']
+all2; // ['Batman', 'Superman', 'Joker', 'Bane']
+```
+
+### Merge using array.push() method to merge it into some existing array.
+```js
+const heroes = ['Batman', 'Superman'];
+const villains = ['Joker', 'Bane'];
+heroes.push(...villains);
+```
