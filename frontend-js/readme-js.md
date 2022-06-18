@@ -747,3 +747,5 @@ const heroes = ['Batman', 'Superman'];
 const villains = ['Joker', 'Bane'];
 heroes.push(...villains);
 ```
+
+# TODO Closures

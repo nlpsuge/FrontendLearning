@@ -98,3 +98,20 @@ The parameter is a compareFunction:
 
 just if you want it sorted the other way, swap the places of a and b in the sort function, instead of calling `reverse()`
 
+# [Delete / remove elements from a JavaScript Array](https://love2dev.com/blog/javascript-remove-from-array/)
+
+## Using [Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+
+The filter() method creates a new array with all elements that pass the test implemented by the provided function.
+
+A new array containing matching values is returned. The original array is left untouched.
+
+```js
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var filtered = array.filter(function(value, index, arr){ 
+    return value > 5;
+});
+//filtered => [6, 7, 8, 9]
+//array => [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+```
+
