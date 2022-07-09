@@ -6,6 +6,9 @@ ES6 入门教程: https://es6.ruanyifeng.com/#README
 
 [jsdoc - An API documentation generator for JavaScript](https://github.com/jsdoc/jsdoc)
 
+[The Modern JavaScript Tutorial](https://javascript.info/)
+
+
 # Fetch
 https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
 The Fetch API provides a JavaScript interface for accessing and manipulating 
@@ -21,70 +24,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_liter
 
 Template literals are literals delimited with backticks (`), 
 allowing embedded expressions called substitutions.
-
-# Promises
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then
-
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#creating_a_promise_around_an_old_callback_api
-
-
-A Promise is an object representing the eventual completion or failure of an asynchronous operation.
-
-Essentially, a promise is a returned object to which you attach callbacks, instead of passing callbacks into a function.
-
-
-[`Promise.resolve()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve) and [`Promise.reject()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject) are shortcuts to manually create an already resolved or rejected promise respectively. This can be useful at times.
-
-Eg:
-``` js
-// using a resolved promise, the 'then' block will be triggered instantly,
-// but its handlers will be triggered asynchronously as demonstrated by the console.logs
-const resolvedProm = Promise.resolve(33);
-// =
-// const resolvedProm = new Promise(function(resolve){ resolve(33); });
-
-let thenProm = resolvedProm.then(value => {
-    console.log("this gets called after the end of the main stack. the value received and returned is: " + value);
-    return value;
-});
-// instantly logging the value of thenProm
-console.log(thenProm);
-
-
-// logs, in order:
-// Promise {[[PromiseStatus]]: "pending", [[PromiseValue]]: undefined}
-// "this gets called after the end of the main stack. the value received and returned is: 33"
-```
-
-```js
-let p = new Promise((r) => {r(444)});
-p.then((v)=>{console.log(v)})
-r = await p;
-console.log('result ' + r)
-
-// logs:
-// 444
-// result 444
-
-
-const asyncFun = async function() {
-  let p = new Promise((r) => {r(444)});
-  p.then((v)=>{console.log(v)})
-  return p;
-}
-
-r = await asyncFun();
-console.log('result ' + r)
-
-// logs:
-// 444
-// result 444
-```
-# await
-`await` can only be used in a `async` function. 
-
 
 # GET 拼接请求参数
 https://stackoverflow.com/questions/35038857/setting-query-string-using-fetch-get-request
@@ -399,6 +338,13 @@ An important difference between function declarations and class declarations is 
 ## ways to define a class
 
 ### using a `class` declaration
+Syntax:
+```
+class name [extends otherName] {
+  // class body
+}
+```
+
 ```js
 class Rectangle {
   constructor(height, width) {
@@ -410,6 +356,13 @@ class Rectangle {
 
 ### using class expression
 Class expressions can be named or unnamed.
+
+Syntax:
+```js
+const MyClass = class [className] [extends otherClassName] {
+  // class body
+}
+```
 
 ```js
 // unnamed
@@ -435,7 +388,14 @@ console.log(Rectangle.name);
 
 Note: Class expressions must be declared before they can be used
 
-## Strict mode
+## extends a class
+[extends - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/extends)
+
+The `extends` keyword is used in [class declarations](#using-a-class-declaration) or [class expressions](#using-class-expression) to create a class that is a child of another class.
+
+The extends keyword can be used to subclass custom classes as well as built-in objects.
+
+# Strict mode
 (JavaScript Use Strict)[https://www.w3schools.com/js/js_strict.asp]
 
 In strict mode, any assignment to a non-writable property, a getter-only property, a non-existing property, a non-existing variable, or a non-existing object, will throw an error. 
@@ -444,7 +404,7 @@ The "use strict" directive is only recognized at the **beginning** of a script o
 
 ## 
 
-## getter / setter
+# getter / setter
 The get syntax binds an object property to a function that will be called when that property is looked up.
 
 using get the property will be defined on the instance's prototype
