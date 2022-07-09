@@ -3,6 +3,7 @@
 
 [DBus in GJS](https://www.andyholmes.ca/articles/dbus-in-gjs.html)
 
+
 # Introspect D-Bus on your desktop
 [D-Feet](https://flathub.org/apps/details/org.gnome.dfeet)
 
@@ -32,4 +33,8 @@ flatpak install flathub org.gnome.dspy
 
 Most projects declare interface definitions in XML, either as files or inline in the code.
 
+
+# TODO Connect signals emitted from a D-Bus interface
+
+https://sudonull.com/post/111586-A-script-that-processes-system-events-using-DBus
 
