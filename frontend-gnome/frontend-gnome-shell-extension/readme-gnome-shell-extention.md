@@ -36,6 +36,24 @@ print('a message');
 printerr('An error occured');
 ```
 
+## View gnome-shell and gjs errors
+
+```sh
+# without date
+journalctl -f -o cat /usr/bin/{gjs,gnome-shell}
+```
+
+```sh
+# with date
+journalctl -f /usr/bin/{gjs,gnome-shell}
+```
+
+```sh
+# with full microsecond precision
+journalctl -o short-precise -f /usr/bin/{gjs,gnome-shell}
+```
+
+
 # [Preferences](https://gjs.guide/extensions/development/preferences.html#gsettings)
 
 ## GSettings
@@ -159,3 +177,8 @@ let icon = new St.Icon({
 });
 ```
 
+# GLib.idle_add()
+The idle_add() can happen much faster than timeouts
+
+# If you want to open prefs.js from extension.js, you can use 
+ExtensionUtils.openPrefs().

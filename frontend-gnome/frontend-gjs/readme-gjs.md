@@ -47,16 +47,16 @@ Lang.bind() was necessary to bind this to the function context **before** the av
 # TODO Develop GJS in vs code (don't work)
 [gnome - Develop GJS in Visual Studio Code - Stack Overflow](https://stackoverflow.com/questions/63908574/develop-gjs-in-visual-studio-code)
 
-> There are a few TypeScript definitions available for GJS:
-> 
-> -   Evan Welsh's [gi.ts](https://gitlab.gnome.org/ewlsh/gi.ts)
-> -   sammydre's [ts-for-gjs](https://github.com/sammydre/ts-for-gjs)
-> 
-> The GNOME APIs are documented at [https://gjs-docs.gnome.org/](https://gjs-docs.gnome.org/). There is also usage documentation and examples in the GJS repository:
-> 
-> -   [GObject Usage](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Mapping.md)
-> -   [Bundled Modules](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md)
-> -   [Code Examples](https://gitlab.gnome.org/GNOME/gjs/-/tree/master/examples)
+There are a few TypeScript definitions available for GJS:
+
+-   Evan Welsh's [gi.ts](https://gitlab.gnome.org/ewlsh/gi.ts)
+-   sammydre's [ts-for-gjs](https://github.com/sammydre/ts-for-gjs)
+
+The GNOME APIs are documented at [https://gjs-docs.gnome.org/](https://gjs-docs.gnome.org/). There is also usage documentation and examples in the GJS repository:
+
+-   [GObject Usage](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Mapping.md)
+-   [Bundled Modules](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md)
+-   [Code Examples](https://gitlab.gnome.org/GNOME/gjs/-/tree/master/examples)
 
 
 # GJS和GNOME Extension趟坑指南
@@ -76,9 +76,9 @@ directly to stdout of the current process
 
 ```
 $ gjs 
-gjs\> print('some', 'string', 42); 
+gjs > print('some', 'string', 42); 
 some string 42
-$ gjs\> printerr('some text 42');
+$ gjs > printerr('some text 42');
 some text
 ```
 
@@ -92,11 +92,12 @@ some text
 
 [doc/Modules.md](https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/Modules.md)
 
-> Put `System.breakpoint()` in your code and run it under GDB like so:
-> 
->     gdb --args gjs my_program.js
-> 
-> When GJS reaches the breakpoint, it will stop executing and return you to the GDB prompt, where you can examine the stack or other things, or type `cont` to continue running. Note that if you run the program outside of GDB, it will abort at the breakpoint, so make sure to remove the breakpoint when you're done debugging.
+Put `System.breakpoint()` in your code and run it under GDB like so:
+```sh
+gdb --args gjs my_program.js
+```
+
+When GJS reaches the breakpoint, it will stop executing and return you to the GDB prompt, where you can examine the stack or other things, or type `cont` to continue running. Note that if you run the program outside of GDB, it will abort at the breakpoint, so make sure to remove the breakpoint when you're done debugging.
 
 
 ### TODO How to get rid of <optimized out> in GDB?
