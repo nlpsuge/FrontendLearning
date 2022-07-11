@@ -256,6 +256,45 @@ console.log(anObj);
 ## apply(), call(), and bind() 
 https://www.freecodecamp.org/news/how-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90/
 
+### [call()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+ The call() method calls a function with a given this value and arguments provided individually. 
+
+ [**call() is a function that lets you change the context of another function by passing `thisArg`**](https://stackoverflow.com/questions/45489249/object-prototype-tostring-call-javascript?answertab=trending#tab-top)
+
+```js
+function Product(name, price) {
+  this.name = name;
+  this.price = price;
+}
+
+function Food(name, price) {
+  Product.call(this, name, price);
+  this.category = 'food';
+}
+
+console.log(new Food('cheese', 5).name);
+// expected output: "cheese"
+
+```
+
+Syntax:
+```
+call()
+call(thisArg)
+call(thisArg, arg1)
+call(thisArg, arg1, arg2)
+call(thisArg, arg1, ... , argN)
+
+```
+
+Optional parameter:
+* `thisArg`: The value to use as this when calling func to change the context.
+* `arg1, arg2, ...argN`: Arguments for the function.
+
+Return value: 
+The result of calling the function with the specified this value and arguments. 
+
+
 ### Function.prototype.apply() V.S. Function.prototype.call() 
 Note that when using the apply() function the parameter must be placed in an array. 
 Call() accepts both an array of parameters and a parameter itself. 
@@ -676,6 +715,22 @@ It may be simpler to do:
 Boolean(object) // boolean
 ```
 
+# [?? - Double question mark / Nullish coalescing operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+
+The nullish coalescing operator (??) is a logical operator that returns its right-hand side operand when its left-hand side operand is **null or undefined**, and otherwise returns its left-hand side operand. 
+
+This can be seen as a special case of the [logical OR (`||`) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR), which returns the right-hand side operand if **the left operand is _any_ [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) value, not only `null` or `undefined`**. In other words, if you use `||` to provide some default value to another variable `foo`, you may encounter unexpected behaviors if you consider some falsy values as usable (e.g., `''` or `0`).
+
+```js
+const foo = null ?? 'default string';
+console.log(foo);
+// expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// expected output: 0
+```
+
 # [Math.max()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
 
 If any one or more of the parameters cannot be converted into a number, NaN is returned. The result is -Infinity if no parameters are provided.
@@ -720,11 +775,47 @@ heroes.push(...villains);
 
 # TODO Closures
 
+# Detect the type / class
+
+## [Object.prototype.toString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString#using_tostring_to_detect_object_class)
+
+
+`toString()` can be used with every object and (by default) allows you to get its class. 
+
+```js
+const toString = Object.prototype.toString;
+
+toString.call(new Date);    // [object Date]
+toString.call(new String);  // [object String]
+toString.call(Math);        // [object Math]
+
+// Since JavaScript 1.8.5
+toString.call(undefined);   // [object Undefined]
+toString.call(null);        // [object Null]
+
+```
+
+Using toString() in this way is unreliable; objects can change the behavior of Object.prototype.toString() by defining a Symbol.toStringTag property, leading to unexpected results:
+
+```js
+const myDate = new Date();
+Object.prototype.toString.call(myDate);     // [object Date]
+
+myDate[Symbol.toStringTag] = 'myDate';
+Object.prototype.toString.call(myDate);     // [object myDate]
+
+Date.prototype[Symbol.toStringTag] = 'prototype polluted';
+Object.prototype.toString.call(new Date()); // [object prototype polluted]
+
+```
+
+
+### See also
+[Object Prototype toString Call - JavaScript](https://stackoverflow.com/questions/45489249/object-prototype-tostring-call-javascript?answertab=trending#tab-top)
+
 # Number
 
 The JavaScript Number type is a double-precision 64-bit binary format IEEE 754 value, like double in Java or C#. This means it can represent fractional values, but there are some limits to what it can store. A Number only keeps about 17 decimal places of precision; arithmetic is subject to rounding. The largest value a Number can hold is about 1.8E308. Values higher than that are replaced with the special Number constant Infinity.
-
-
 
 ## [Convert Int using Number.parseInt() - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt)
 
