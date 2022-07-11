@@ -154,26 +154,6 @@ for (let index in an_array) {
 }
 ```
 
-# Map
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
-``` js
-const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
-
-for (const entry of iterable) {
-  console.log(entry);
-}
-// ['a', 1]
-// ['b', 2]
-// ['c', 3]
-
-for (const [key, value] of iterable) {
-  console.log(value);
-}
-// 1
-// 2
-// 3
-```
-
 # export default VS export named 
 https://24ways.org/2014/javascript-modules-the-es6-way/
 https://stackoverflow.com/questions/21117160/what-is-export-default-in-javascript
@@ -593,6 +573,36 @@ for (const [key, value] of toMap) {
 }
 ```
 
+## Map iterate
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+``` js
+const iterable = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+for (const entry of iterable) {
+  console.log(entry);
+}
+// ['a', 1]
+// ['b', 2]
+// ['c', 3]
+
+for (const [key, value] of iterable) {
+  console.log(value);
+}
+// 1
+// 2
+// 3
+```
+
+# Set
+[Set - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+You can iterate through the elements of a set in insertion order. A value in the `Set` **may only occur once**; it is unique in the `Set`'s collection.
+
+[Set - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+[`NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) and [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) can also be stored in a Set. All `NaN` values are equated (i.e. `NaN` is considered the same as `NaN`, even though `NaN !== NaN`).
+
+
 # Truthy vs Falsy
 https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 https://developer.mozilla.org/en-US/docs/Glossary/Falsy
@@ -709,3 +719,12 @@ heroes.push(...villains);
 ```
 
 # TODO Closures
+
+# Number
+
+The JavaScript Number type is a double-precision 64-bit binary format IEEE 754 value, like double in Java or C#. This means it can represent fractional values, but there are some limits to what it can store. A Number only keeps about 17 decimal places of precision; arithmetic is subject to rounding. The largest value a Number can hold is about 1.8E308. Values higher than that are replaced with the special Number constant Infinity.
+
+
+
+## [Convert Int using Number.parseInt() - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt)
+
