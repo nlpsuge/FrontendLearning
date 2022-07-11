@@ -12,6 +12,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#cre
 
 [JavaScript Promises](https://www.w3schools.com/js/js_promise.asp)
 
+[From JavaScript Promises to Async/Await: why bother?](https://blog.pusher.com/promises-async-await/)
+
 
 A Promise is an object representing the eventual completion or failure of an asynchronous operation.
 
@@ -77,6 +79,17 @@ console.log('result ' + r)
 // result 444
 ```
 
+## Code following the resolve() continues running
+https://stackoverflow.com/questions/28896280/why-does-javascript-es6-promises-continue-execution-after-a-resolve
+
+Use `return resolve()` to return immediately:
+```js
+return new Promise(function(resolve, reject) {
+    return resolve();
+    console.log("Not doing more stuff after a return statement");
+});
+```
+
 # `async` keyword
 
 ## [`async` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function#syntax)
@@ -117,7 +130,7 @@ asyncCall();
 
 Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. **The resolved value of the promise is treated as the return value of the await expression.**
 
-Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.
+Async functions always return a promise. **If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.**
 
 ```js
 async function foo() {
