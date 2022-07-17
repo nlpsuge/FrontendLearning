@@ -1,8 +1,11 @@
+#!/usr/bin/gjs
+
 //****
 //**** This file was copied from https://gist.github.com/buzztaiki/1492431
 //**** Thank you :)
 //****
 
+// Working. Run it using below command line:
 // LD_LIBRARY_PATH=/usr/lib64/gnome-shell/ gjs shell_object_sample.js
 
 const GIRepository = imports.gi.GIRepository;
