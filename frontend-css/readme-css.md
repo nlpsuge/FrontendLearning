@@ -42,3 +42,26 @@ An element can take multiple classes:
 
 https://jsfiddle.net/tomaskafka/ur1hvzy3/
 
+
+# Color
+##  [Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+
+[Hexadecimal color code for transparency](https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4)
+
+### How to set transparency?
+ 
+#### hexadecimal transparency
+For example, you want to set **40%** alpha transparence to `#000000` (black color), you need to add `66` like this `#66000000`. The first two bit is hexadecimal transparency and the rest 6 bit is hexadecimal RGB color.
+
+00%=FF (fully opacity)
+5%=F2    10%=E5    15%=D8    20%=CC    25%=BF    30%=B2    35%=A5    40%=99    45%=8c    50%=7F
+
+55%=72    60%=66    65%=59    70%=4c    75%=3F    80%=33    85%=21    90%=19    95%=0c    
+100%=00 (fully transparency)
+
+#### rgba
+rgba(194,53,49,0.45)
+
+
+# [CSS Image Opacity / Transparency](https://www.w3schools.com/css/css_image_transparency.asp)
+
