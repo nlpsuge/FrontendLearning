@@ -54,9 +54,11 @@ https://jsfiddle.net/tomaskafka/ur1hvzy3/
 For example, you want to set **40%** alpha transparence to `#000000` (black color), you need to add `66` like this `#66000000`. The first two bit is hexadecimal transparency and the rest 6 bit is hexadecimal RGB color.
 
 00%=FF (fully opacity)
+
 5%=F2    10%=E5    15%=D8    20%=CC    25%=BF    30%=B2    35%=A5    40%=99    45%=8c    50%=7F
 
-55%=72    60%=66    65%=59    70%=4c    75%=3F    80%=33    85%=21    90%=19    95%=0c    
+55%=72    60%=66    65%=59    70%=4c    75%=3F    80%=33    85%=21    90%=19    95%=0c
+
 100%=00 (fully transparency)
 
 #### rgba
