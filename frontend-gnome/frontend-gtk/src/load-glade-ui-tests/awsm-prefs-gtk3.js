@@ -1,5 +1,8 @@
 #!/usr/bin/env gjs
 
+// cd ./FrontendLearning/frontend-gnome/frontend-gtk/src/load-glade-ui-tests
+// gjs awsm-prefs-gtk3.js
+
 imports.gi.versions.Gtk = "3.0"
 const { Gtk, GObject } = imports.gi;
 
