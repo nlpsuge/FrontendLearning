@@ -288,7 +288,7 @@ return (
   >
     <TabPane
         tab={
-          <span className={styles.tabTitle}>list</span>
+          <span>list</span>
         }
         key={0}
       >
