@@ -125,6 +125,39 @@ async function asyncCall() {
 }
 asyncCall();
 ```
+## [Promise.prototype.then()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+
+**The `then()` method returns a Promise.**
+
+### Syntax
+```js
+p.then(onFulfilled[, onRejected]);
+```
+
+
+### Examples
+
+```js
+const noop = (result) => {console.log(result)};
+const nextTickPromise = () => Promise.resolve(3).then(noop);
+// Print 3
+nextTickPromise();
+
+const nextTickPromise1 = () => Promise.resolve(3).then(4).then(5, 51).then(noop);
+// Print 3, 4 and 5 never return.
+nextTickPromise1();
+
+const nextTickPromise2 = () => Promise.resolve(3).then(4).then(r => {return r + 5;}, 51).then(noop);
+// Print 8, 3 + 5 equals 8.
+nextTickPromise2();
+
+const nextTickPromise3 = () => Promise.resolve(3)
+                                      // returns 4 which is wrapped in a resolved Promise
+                                      .then(r => {return 4})
+                                      .then(5, 51).then(noop);
+// Print 4
+nextTickPromise3();
+```
 
 **Async functions can contain zero or more await expressions.**
 
@@ -145,7 +178,6 @@ function foo() {
    return Promise.resolve(1)
 }
 ```
-
 
 
 # await

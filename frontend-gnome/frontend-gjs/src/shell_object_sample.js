@@ -5,7 +5,7 @@
 //**** Thank you :)
 //****
 
-// Working. Run it using below command line:
+// Working on Gnome 42.2. Run it using below command line:
 // LD_LIBRARY_PATH=/usr/lib64/gnome-shell/ gjs shell_object_sample.js
 
 const GIRepository = imports.gi.GIRepository;
