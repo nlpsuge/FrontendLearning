@@ -646,19 +646,23 @@ You can iterate through the elements of a set in insertion order. A value in the
 https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 
-Truthy
-true
-[]
-{}
-3
-"0"
-"false"
+## Truthy
+
+All values are _truthy_ except `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, and `NaN`:
+
+- true
+- []
+- {}
+- 3
+- "0"
+- "false"
+- negative value, such as -42. (Note that -0 is falsy)
 
 
-Falsy:
-false
-0 / 0.0 / 0x0
--0 / -0.0 / -0x0
+## Falsy
+- false
+- 0 / 0.0 / 0x0
+- -0 / -0.0 / -0x0
 
 ## [if(x) vs if(x==true)](https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true)
 `if(x)` checks if x is Truthy where as `if(x==true)` checks if the Boolean value of x is true.
@@ -818,3 +822,8 @@ Object.prototype.toString.call(new Date()); // [object prototype polluted]
 The JavaScript Number type is a double-precision 64-bit binary format IEEE 754 value, like double in Java or C#. This means it can represent fractional values, but there are some limits to what it can store. A Number only keeps about 17 decimal places of precision; arithmetic is subject to rounding. The largest value a Number can hold is about 1.8E308. Values higher than that are replaced with the special Number constant Infinity.
 
 ## [Convert Int using Number.parseInt() - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt)
+
+# [title - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title)
+
+The **`title`** [global attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes) contains text representing advisory information related to the element it belongs to.
+
