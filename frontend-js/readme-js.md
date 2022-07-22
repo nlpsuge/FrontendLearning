@@ -818,3 +818,45 @@ Object.prototype.toString.call(new Date()); // [object prototype polluted]
 The JavaScript Number type is a double-precision 64-bit binary format IEEE 754 value, like double in Java or C#. This means it can represent fractional values, but there are some limits to what it can store. A Number only keeps about 17 decimal places of precision; arithmetic is subject to rounding. The largest value a Number can hold is about 1.8E308. Values higher than that are replaced with the special Number constant Infinity.
 
 ## [Convert Int using Number.parseInt() - JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/parseInt)
+
+# [Arrow function expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+
+An arrow function expression is a compact alternative to a traditional function expression, but **is limited and can't be used in all situations.**
+
+Some limitations:
+
+- Arrow functions don't have their own bindings to [`this`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) or [`super`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/super), and should not be used as [methods](https://developer.mozilla.org/en-US/docs/Glossary/Method).
+- Arrow functions don't have access to the [`new.target`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target) keyword.
+- Arrow functions aren't suitable for [`call`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call), [`apply`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) and [`bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) methods, which generally rely on establishing a [scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope).
+- Arrow functions cannot be used as [constructors](https://developer.mozilla.org/en-US/docs/Glossary/Constructor). So you cannot use `new` to an Arrow function:
+```js
+const Foo = () => {};
+const foo = new Foo(); // TypeError: Foo is not a constructor
+```
+- Arrow functions cannot use [`yield`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/yield), within its body.
+
+
+For **named functions** we treat arrow expressions like variables:
+
+```js
+// Traditional Function
+function bob(a) {
+  return a + 100;
+}
+
+// Arrow Function
+const bob = a => a + 100;
+```
+
+Arrow functions can have either a _concise body_ or the usual _block body_.
+ 
+**In a concise body, only an expression is specified, which becomes the implicit return value. In a block body, you must use an explicit `return` statement.**
+
+```js
+const func = x => x * x;
+// concise body syntax, implied "return"
+
+const func2 = (x, y) => { return x + y; };
+// with block body, explicit "return" needed
+```
+

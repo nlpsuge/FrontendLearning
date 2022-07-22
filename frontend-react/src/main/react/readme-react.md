@@ -33,9 +33,6 @@ $ npm config set registry https://registry.npm.taobao.org
 $ cnpm install [name]
 ```
 
-# TODO 箭头函数
-https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions
-
 # 创建一个react前端应用
 https://zh-hans.reactjs.org/docs/create-a-new-react-app.html#create-react-app
 npx create-react-app my-app
