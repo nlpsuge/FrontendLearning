@@ -646,19 +646,23 @@ You can iterate through the elements of a set in insertion order. A value in the
 https://developer.mozilla.org/en-US/docs/Glossary/Truthy
 https://developer.mozilla.org/en-US/docs/Glossary/Falsy
 
-Truthy
-true
-[]
-{}
-3
-"0"
-"false"
+## Truthy
+
+All values are _truthy_ except `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, and `NaN`:
+
+- true
+- []
+- {}
+- 3
+- "0"
+- "false"
+- negative value, such as -42. (Note that -0 is falsy)
 
 
-Falsy:
-false
-0 / 0.0 / 0x0
--0 / -0.0 / -0x0
+## Falsy
+- false
+- 0 / 0.0 / 0x0
+- -0 / -0.0 / -0x0
 
 ## [if(x) vs if(x==true)](https://stackoverflow.com/questions/23061921/javascript-ifx-vs-ifx-true)
 `if(x)` checks if x is Truthy where as `if(x==true)` checks if the Boolean value of x is true.
@@ -859,4 +863,8 @@ const func = x => x * x;
 const func2 = (x, y) => { return x + y; };
 // with block body, explicit "return" needed
 ```
+
+# [title - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/title)
+
+The **`title`** [global attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes) contains text representing advisory information related to the element it belongs to.
 

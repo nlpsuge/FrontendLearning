@@ -257,4 +257,76 @@ function Timer() {
 ```
 
 
+# Trouble Shotting
+
+## Type A is not assignable to type B
+
+### Type '(key: string, event: MouseEvent) => void' is not assignable to type '(activeKey: string, e: KeyboardEvent<Element> | MouseEvent<Element, MouseEvent>) => void'.
+
+```js
+const onTabClick = (key: string, event: MouseEvent) => {
+  console.log(key);
+};
+return (
+  <Tabs
+    defaultActiveKey="0"
+    size="small"
+    type="card"
+    tabBarExtraContent={
+      <div
+        style={{
+          boxSizing: "border-box",
+          paddingBottom: 5
+        }}
+      >
+      </div>
+    }
+    onTabClick={(key: string, event: MouseEvent) => onTabClick(key, event)}
+  >
+    <TabPane
+        tab={
+          <span>list</span>
+        }
+        key={0}
+      >
+      <div>test tab 1</div>
+    </TabPane>
+  </Tabs>
+);
+```
+
+The type of `onTabClick={(key: string, event: MouseEvent) => onTabClick(key, event)}` is not matched to `onTabClick`.
+
+Fix:
+`onTabClick={(key: string, event) => onTabClick(key, event)}`
+and 
+```js
+const onTabClick = (key: string, event) => {
+  console.log(key);
+};
+```
+
+### Type 'void' is not assignable to type '((event: MouseEvent<HTMLInputElement>) => void) | undefined'
+```js
+<input type="button" onClick={this.fetchData("dfd")} value="Search" />
+```
+
+
+In your code `this.fetchData("dfd")` you are _calling_ the function. The function returns `void`. `void` is not assingable to `onClick` which expects a function.
+ 
+To Fix it, create a new function that calls fetchData e.g. `onClick={() => this.fetchData("dfd")}` .
+
+[javascript - Type 'void' is not assignable to type '((event: MouseEvent<HTMLInputElement>) => void) | undefined' - Stack Overflow](https://stackoverflow.com/questions/51977823/type-void-is-not-assignable-to-type-event-mouseeventhtmlinputelement)
+
+
+## Property 'stateOne' does not exist on type '[string, Dispatch<SetStateAction<string>>]'
+
+```js
+const {stateOne, setStateOne} = useState<string>("0");
+```
+
+To fix it:
+Should use const [ stateOne, setStateOne ] instead of const { stateOne, setStateOne }
+
+
 
