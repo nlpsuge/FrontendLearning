@@ -67,3 +67,20 @@ rgba(194,53,49,0.45)
 
 # [CSS Image Opacity / Transparency](https://www.w3schools.com/css/css_image_transparency.asp)
 
+# Styling
+
+# top center
+```html
+<div 
+  style='position: fixed;left: 50%;'
+>
+  some data
+</div>
+```
+
+See Also: 
+
+https://javascript.info/shadow-dom-style#host
+
+[left - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/left)
+
