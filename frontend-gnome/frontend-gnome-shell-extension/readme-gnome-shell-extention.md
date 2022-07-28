@@ -182,3 +182,37 @@ The idle_add() can happen much faster than timeouts
 
 # If you want to open prefs.js from extension.js, you can use 
 ExtensionUtils.openPrefs().
+
+# How to check the GNOME shell version 
+
+## Method 1, split by . and then compare using major or minor
+
+[Version Number Detection](https://gjs.guide/extensions/development/targeting-older-gnome.html#version-number-detection)
+```js
+const Config = imports.misc.config;
+const [major, minor] = Config.PACKAGE_VERSION.split('.').map(s => Number(s));
+
+if (major === 3 && minor <= 36)
+log('Shell 3.36 or lower');
+else if (major === 3 && minor === 38)
+log('Shell 3.38');
+else if (major >= 40)
+log('Shell 40 or higher');
+```
+
+## Method 2, convert version to float and then compare in float type
+
+```js
+const GNOME_VERSION = parseFloat(Config.PACKAGE_VERSION);
+
+function isOlderThan42() {
+    return GNOME_VERSION < 42;
+}
+```
+
+# Using TypeScript in Gnome Shell Extension
+
+https://gitlab.gnome.org/harshadgavali/gnome-extension-template
+
+
+
