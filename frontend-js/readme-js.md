@@ -874,3 +874,15 @@ The **`title`** [global attribute](https://developer.mozilla.org/en-US/docs/Web/
 
 # [Searching: getElement*, querySelector*](https://javascript.info/searching-elements-dom)
 
+
+# Error
+
+[Error - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+
+https://nodejs.org/api/errors.html
+
+
+## Cause
+
+The error.cause property is typically set by calling new Error(message, { cause }). It is not set by the constructor if the cause option is not provided.
+

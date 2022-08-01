@@ -163,7 +163,7 @@ nextTickPromise3();
 
 Await expressions make promise-returning functions behave as though they're synchronous by suspending execution until the returned promise is fulfilled or rejected. **The resolved value of the promise is treated as the return value of the await expression.**
 
-Async functions always return a promise. **If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise.**
+**Async functions always return a promise. If the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise either resolved or rejected. If thrown an Error within an Async function, this Error will be wrapped inside a Promise rejection. Use `.catch()` to catch the Error**
 
 ```js
 async function foo() {
