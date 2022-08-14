@@ -215,4 +215,15 @@ function isOlderThan42() {
 https://gitlab.gnome.org/harshadgavali/gnome-extension-template
 
 
+# extension.js
+
+## disable() and enable()
+disable() will run in:
+- disable the extension
+- remove (uninstall) the extension
+- lock screen
+
+enable() will run in:
+- enable the extension
+- unclock screen
 

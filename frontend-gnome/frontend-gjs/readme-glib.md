@@ -57,3 +57,15 @@ Since the variant format is foundational to DBus, there are two things you shoul
 
 `GVariant` is the storage and data exchange format for [`GSettings`](https://developer.gnome.org/gio/stable/GSettings.html).
 
+# [Error.matches(domain, code) / g_error_matches](https://gjs-docs.gnome.org/glib20~2.66.1/glib.error#method-matches)
+
+```js
+try {
+    // ...
+} catch (e) {
+    if (e.matches(Gio.IOErrorEnum, Gio.IOErrorEnum.CANCELLED)) {
+        // ...
+    }
+}
+```
+
