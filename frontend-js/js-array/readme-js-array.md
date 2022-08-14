@@ -57,6 +57,12 @@ fruits.push("Kiwi");   // Adds "Kiwi"
 # [arrays.some()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 The some() method tests whether at least one element in the array passes the test implemented by the provided function.
 
+# [Array.prototype.includes() - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
+
+Determines whether an array includes a certain value among its entries, returning `true` or `false` as appropriate.
+
+It checks each element for equality with the value.
+
 # Convert array to string and add separator
 [Array.prototype.join()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
 ```js
