@@ -598,31 +598,6 @@ for (const [k, v] of map1) {
 }
 
 ```
-
-## [Map.prototype.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach)
-
-### Syntax
-```js
-// Arrow function
-forEach(() => { /* … */ } )
-forEach((value) => { /* … */ } )
-forEach((value, key) => { /* … */ } )
-forEach((value, key, map) => { /* … */ } )
-```
-
-### Example
-```js
-function logMapElements(value, key, map) {
-    console.log(`map.get('${key}') = ${value}`)
-}
-new Map([['foo', 3], ['bar', {}], ['baz', undefined]]).forEach(logMapElements)
-// logs:
-// "map.get('foo') = 3"
-// "map.get('bar') = [object Object]"
-// "map.get('baz') = undefined"
-```
-
-
 ## Map to json, and vice versa
 [How do you JSON.stringify an ES6 Map?](https://stackoverflow.com/questions/29085197/how-do-you-json-stringify-an-es6-map)
 
@@ -669,17 +644,6 @@ You can iterate through the elements of a set in insertion order. A value in the
 
 [`NaN`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN) and [`undefined`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined) can also be stored in a Set. All `NaN` values are equated (i.e. `NaN` is considered the same as `NaN`, even though `NaN !== NaN`).
 
-## Usages
-
-### Remove duplicate elements from the array
-
-```js
-const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,7,5,32,3,4,5]
-
-console.log([...new Set(numbers)])
-
-// [2, 3, 4, 5, 6, 7, 32]
-```
 
 # Truthy vs Falsy
 https://developer.mozilla.org/en-US/docs/Glossary/Truthy
@@ -910,15 +874,30 @@ The **`title`** [global attribute](https://developer.mozilla.org/en-US/docs/Web/
 
 # [Searching: getElement*, querySelector*](https://javascript.info/searching-elements-dom)
 
+# [Destructuring assignment (解构赋值) - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
-# Error
+To **unpack values from arrays, or properties from objects**, into distinct variables.
 
-[Error - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+## For arrays
 
-https://nodejs.org/api/errors.html
+### Examples
+```js
+const x = [1, 2, 3, 4, 5];
+const [y, z] = x;
+console.log(y); // 1
+console.log(z); // 2
+```
 
+## For objects
 
-## Cause
+### Examples
+```js
+const obj = { a: 1, b: 2 };
+const { a, b } = obj;
+// `const { a, b } = obj;` is equivalent to:
+// const a = obj.a;
+// const b = obj.b;
 
-The error.cause property is typically set by calling new Error(message, { cause }). It is not set by the constructor if the cause option is not provided.
-
+console.log(a); // 1
+console.log(b); // 2
+```
