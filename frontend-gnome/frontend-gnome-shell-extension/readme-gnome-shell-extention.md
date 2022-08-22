@@ -227,3 +227,34 @@ enable() will run in:
 - enable the extension
 - unclock screen
 
+# TODO Babel 
+
+```shell
+pnpm install babel-cli babel-preset-env save-dev
+```
+
+``` json
+// filename: .babelrc.json
+// See: https://babeljs.io/docs/en/babel-generator#options
+{
+    "presets": ["@babel/preset-env"],
+    // see: https://babeljs.io/docs/en/plugins-list
+    // "plugins": [
+    //     "@babel/plugin-proposal-optional-chaining", 
+    //     "@babel/plugin-proposal-nullish-coalescing-operator",
+    //     // "babel-plugin-recast"
+    // ],
+    "compact": false,
+    // "retainLines": true
+}
+```
+
+``` json
+// filename: package.json
+{
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "babel src -d lib"
+    }
+}
+```
