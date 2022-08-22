@@ -6,7 +6,7 @@ Yeah! Sometimes, it's so so so annoying that I can't find the right option, the 
 # Show All Commands
 
 - Help -> Show All Commands
-- Press `Ctrl + n` or `Shift + Shift` then type `>`
+- Press `Ctrl + n` or `Shift + Shift` then type `>`, then you should see many options/commands
 - `Ctrl + Shift + A`
 
 # Convert selected text to `upper`/`lower`/`camel` case
