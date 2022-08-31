@@ -1,9 +1,9 @@
 # Doc
 [gjs guide](https://gjs.guide/guides/)
 
-[gjs - readme](https://gitlab.gnome.org/GNOME/gjs)
+[gjs](https://gitlab.gnome.org/GNOME/gjs)
 
-[gjs docs](https://gjs-docs.gnome.org/)
+[gjs docs](https://gjs-docs.gnome.org/gjs/)
 
 [Language bindings based on GObject-Introspection](https://wiki.gnome.org/Projects/GObjectIntrospection/Users)
 
