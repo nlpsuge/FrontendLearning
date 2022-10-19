@@ -38,32 +38,23 @@
   The plugin configuration file is a `plugin.xml` file located in the `src/main/resources/META-INF` directory. It provides general information about the plugin, its dependencies, extensions, and listeners. 
   
 ```xml
-<idea-plugin>
-  <id>org.jetbrains.plugins.template</id>
-  <name>Template</name>
-  <vendor>JetBrains</vendor>
-  <depends>com.intellij.modules.platform</depends>
-
-  <extensions defaultExtensionNs="com.intellij">
-    <applicationService serviceImplementation="..."/>
-    <projectService serviceImplementation="..."/>
-  </extensions>
-
-  <projectListeners>
-    <listener class="..." topic="..."/>
-  </projectListeners>
-</idea-plugin>
+    <idea-plugin>
+      <id>org.jetbrains.plugins.template</id>
+      <name>Template</name>
+      <vendor>JetBrains</vendor>
+      <depends>com.intellij.modules.platform</depends>
+    
+      <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="..."/>
+        <projectService serviceImplementation="..."/>
+      </extensions>
+    
+      <projectListeners>
+        <listener class="..." topic="..."/>
+      </projectListeners>
+   </idea-plugin>
 ```
-
-# Open the default Browser to open url
-
-`com.intellij.ide.BrowserUtil.browse(url);`
-
-# [invokeLater()](https://plugins.jetbrains.com/docs/intellij/general-threading-rules.html#modality-and-invokelater)
-
-To pass control from a background thread to the [Event Dispatch Thread](https://docs.oracle.com/javase/tutorial/uiswing/concurrency/dispatch.html) (EDT), instead of the standard `SwingUtilities.invokeLater()`, plugins should use `ApplicationManager.getApplication().invokeLater()`. The latter API allows specifying the _modality state_ ([`ModalityState`](https://github.com/JetBrains/intellij-community/tree/idea/222.3739.54/platform/core-api/src/com/intellij/openapi/application/ModalityState.java)) for the call.
-
-Check https://plugins.jetbrains.com/docs/intellij/general-threading-rules.html#modality-and-invokelater for more info about `ModalityState`.
+   
 
 # Log
 [IntelliJ IDEA plugin development - Log from within plugin](https://stackoverflow.com/questions/32294213/intellij-idea-plugin-development-log-from-within-plugin)
@@ -75,18 +66,6 @@ import com.intellij.openapi.diagnostic.Logger;
 private static final Logger log = Logger.getInstance(Some.class);
 
 ```
-
-# Files location
-
-## Plugins location
-* `$user_home\.IntelliJIdea2018.x\config\plugins`
-* `$user_home\AppData\Roaming\JetBrains\IdeaIC2022.x\plugins`
-
-## Logs location
-* `Help -> Show log in explorer`
-* `$user_home\.IntelliJIdea2018.x\system\log`
-* `$user_home\AppData\Roaming\JetBrains\IdeaIC2022.x\log`
-
 
 # Icons
 
@@ -186,7 +165,4 @@ userNameIcon.addMouseListener(new MouseAdapter() {
 
 Change `JAVA_MODULE` to `PLUGIN_MODULE` in xxx.iml file under the project.
 
-## swing `mouseclicked` repeatedly triggered
-
-Check the code if there are two or more Listener added.
 
