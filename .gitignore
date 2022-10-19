@@ -116,3 +116,5 @@ frontend-vue/target
 
 # Avoid to save files like Settings.ui~
 *~
+
+.gradle
