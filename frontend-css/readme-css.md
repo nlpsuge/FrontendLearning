@@ -84,3 +84,20 @@ https://javascript.info/shadow-dom-style#host
 
 [left - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/left)
 
+
+# [box-shadow](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow): Add shadow to an element
+
+The `box-shadow` CSS property adds shadow effects around an element's frame.
+
+## Use `box-shadow` to simulate border or indicator
+
+* Method 1:
+
+`box-shadow: inset 0 -4px purple;`
+
+
+* Methods 2:
+
+`border-style: none none solid none;border-color: red;`
+
+

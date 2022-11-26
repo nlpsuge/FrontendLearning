@@ -1,0 +1,10 @@
+// sassc sass-test.scss
+
+// https://sass-lang.com/documentation/modules/color#lighten
+// #e1d7d2 has lightness 85%, so when lighten() adds 30% it just returns white.
+@debug lighten(#e1d7d2, 30%); // white
+
+@debug darken(purple, 99%); // white
+@debug #7b007b
+
+
