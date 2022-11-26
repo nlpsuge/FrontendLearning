@@ -29,13 +29,19 @@ const Settings = GObject.registerClass(
             this._builder.add_from_file('./SettingsGtk4.ui');
             this.notebook = this._builder.get_object('settings_notebook');
 
-            const sensitive = this._builder.get_object('show_app_icon_switch_sensitive').get_sensitive();
+            const show_app_icon_switch_sensitive = this._builder.get_object('show_app_icon_switch_sensitive');
+            const sensitive = show_app_icon_switch_sensitive.get_sensitive();
             log('the sensitive of show_app_icon_switch_sensitive is: ' + sensitive);
+            log('the activation of show_app_icon_switch_sensitive is: ' + show_app_icon_switch_sensitive.get_active());
+
+            const hide_icon_for_video_player_switch = this._builder.get_object('hide_icon_for_video_player_switch');
 
             this._builder.get_object('show_app_icon_switch').connect('notify::active', (widget, value) => {
                 // Whether the GtkSwitch widget is in its on or off state.
                 const active = widget.active
                 log('show_app_icon_switch activate via lambda: ' + active);
+                hide_icon_for_video_player_switch.set_sensitive(active);ning
+                log('The hide_icon_for_video_player_switch_active is ' + hide_icon_for_video_player_switch.get_active());
             });
 
             this._builder.get_object('multimon_multi_switch').connect('notify::active', Lang.bind (this, function(widget) {
