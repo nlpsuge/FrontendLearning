@@ -21,7 +21,31 @@ GLib.DateTime.new_now_local().to_unix(),
 
 ```js
 GLib.DateTime.new_now_local().format('%Y-%m-%d %T.%f');
+
+// 2022-11-13 12:04:04
+// 1668312244 is the Unix time (The number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, regardless of the local time offset)
+GLib.DateTime.new_from_unix_local(1668312244).format('%Y-%m-%d %T')
 ```
+
+
+## Monotonic time VS Real time
+
+[GLib 2.66.1 / get_monotonic_time() — DevDocs](https://gjs-docs.gnome.org/glib20~2.66.1/glib.get_monotonic_time)
+
+[GLib 2.66.1 / get_real_time() — DevDocs](https://gjs-docs.gnome.org/glib20~2.66.1/glib.get_real_time)
+
+* GLib.get_monotonic_time()
+
+return number, in microseconds
+
+**The monotonic clock will always increase and doesn't suffer discontinuities** when 
+the user (or NTP) changes the system time. It **may or may not** continue to tick 
+during times where the machine is suspended.
+
+* GLib.get_real_time()
+
+Return the real wall-clock time, the number of microseconds since January 1, 1970 UTC
+
 
 # [GVariant](https://gjs.guide/guides/glib/gvariant.html#basic-usage)
 
@@ -69,3 +93,4 @@ try {
 }
 ```
 
+# 
