@@ -55,7 +55,10 @@ console.log(thenProm);
 ```
 
 ```js
-let p = new Promise((resolve) => {resolve(444)});
+p = new Promise((resolve) => {
+  resolve(444);
+  console.log('after resolve');
+  });
 p.then((v)=>{console.log(v)})
 r = await p;
 console.log('result ' + r)
