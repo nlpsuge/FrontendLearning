@@ -171,7 +171,7 @@ g_signal_connect (text_view->buffer, "notify::paste-target-list",
                   text_view)
 ``
 
-# [Shell.Global](https://gjs-docs.gnome.org/shell01~0.1_api/shell.global)
+# [Shell.Global](https://gjs-docs.gnome.org/shell01~0.1/shell.global)
 
 ## Shell.Global.get()
 Gets the singleton global object that represents the desktop.

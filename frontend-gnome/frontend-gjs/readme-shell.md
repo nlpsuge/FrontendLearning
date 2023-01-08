@@ -1,24 +1,24 @@
 # Doc
 
 # Get app info
-[Shell.app](https://gjs-docs.gnome.org/shell01~0.1_api/shell.app)
+[Shell.app](https://gjs-docs.gnome.org/shell01~0.1/shell.app)
 
-https://gjs-docs.gnome.org/shell01~0.1_api/shell.app#method-request_quit
+https://gjs-docs.gnome.org/shell01~0.1/shell.app#method-request_quit
 
 ## Get window info
 
 ### Get windows which are associated with an application
-https://gjs-docs.gnome.org/shell01~0.1_api/shell.app#method-get_windows
+https://gjs-docs.gnome.org/shell01~0.1/shell.app#method-get_windows
 
 
 
 ## Get running apps which have at least one open window
-https://gjs-docs.gnome.org/shell01~0.1_api/shell.appsystem#method-get_running
+https://gjs-docs.gnome.org/shell01~0.1/shell.appsystem#method-get_running
 
 ## search app via desktop id, like org.gnome.Terminal.desktop
-https://gjs-docs.gnome.org/shell01~0.1_api/shell.appsystem#method-lookup_app
+https://gjs-docs.gnome.org/shell01~0.1/shell.appsystem#method-lookup_app
 
-https://gjs-docs.gnome.org/shell01~0.1_api/shell.app#method-get_app_info - return Gio.DesktopAppInfo
+https://gjs-docs.gnome.org/shell01~0.1/shell.app#method-get_app_info - return Gio.DesktopAppInfo
 
 ``` js
 const { Shell } = imports.gi;
