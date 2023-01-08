@@ -901,3 +901,18 @@ const { a, b } = obj;
 console.log(a); // 1
 console.log(b); // 2
 ```
+
+# Capitalize a Word
+
+See: [How do I make the first letter of a string uppercase in JavaScript?](https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript)
+
+```js
+const str = 'word';
+const capitalized = str[0].toUpperCase() + str.substring(1)
+// Word
+console.log(capitalized)
+```
+
+Note:
+1. `str.substring(1)` is faster than `str.slice(1)`
+2. `str[0]` can be replaced with `str.charAt(0)`
