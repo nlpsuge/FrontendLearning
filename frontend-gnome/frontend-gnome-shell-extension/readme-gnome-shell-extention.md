@@ -258,3 +258,12 @@ pnpm install babel-cli babel-preset-env save-dev
     }
 }
 ```
+
+# Backup and restore gnome shell extensions setting
+
+## export all extensions settings to 'extensions.conf' file
+dconf dump /org/gnome/shell/extensions/ > extensions.conf
+
+## import all extensions settings from 'extensions.conf' file
+dconf load -f /org/gnome/shell/extensions/ < extensions.conf
+
