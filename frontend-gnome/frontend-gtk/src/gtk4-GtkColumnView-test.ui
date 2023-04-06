@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="AwsmCloseWhitelist" parent="GtkBox">
+    <property name="orientation">vertical</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <style>
+          <class name="view"/>
+        </style>
+        <child>
+          <object class="GtkScrolledWindow">
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <property name="hscrollbar-policy">never</property>
+            <child>
+              <object class="GtkColumnView" id="list">
+                <style>
+                  <class name="data-table"/>
+                  <class name="list"/>
+                </style>
+                <child>
+                  <object class="GtkColumnViewColumn" id="column1">
+                    <property name="title" translatable="yes">column 1</property>
+                    <property name="factory">
+                      <object class="GtkSignalListItemFactory">
+                        <signal name="setup" handler="setup_column1_cb"/>
+                        <signal name="bind" handler="bind_column1_cb"/>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkColumnViewColumn" id="column2">
+                    <property name="title" translatable="yes">column 2</property>
+                    <property name="factory">
+                      <object class="GtkBuilderListItemFactory">
+                        <property name="bytes"><![CDATA[
+                          <?xml version="1.0" encoding="UTF-8"?>
+                          <interface>
+                            <template class="GtkListItem">
+                              <property name="child">
+                                <object class="GtkLabel">
+                                  <property name="hexpand">TRUE</property>
+                                  <property name="xalign">0</property>
+                                  <binding name="label">
+                                  <!-- TODO not working -->
+                                    <closure type="gchararray" function="getColumn2Factory">
+                                      <lookup name="item">GtkListItem</lookup>
+                                    </closure>
+                                  </binding>
+                                </object>
+                              </property>
+                            </template>
+                          </interface>
+                        ]]></property>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkColumnViewColumn" id="column3">
+                    <property name="title" translatable="yes">column 3</property>
+                    <property name="factory">
+                      <object class="GtkSignalListItemFactory">
+                        <signal name="setup" handler="setup_column3_cb"/>
+                        <signal name="bind" handler="bind_column3_cb"/>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkColumnViewColumn" id="column4">
+                    <property name="title" translatable="yes">column 4</property>
+                    <property name="expand">1</property>
+                    <property name="factory">
+                      <object class="GtkSignalListItemFactory">
+                        <signal name="setup" handler="setup_column4_cb"/>
+                        <signal name="bind" handler="bind_column4_cb"/>
+                        <!-- <signal name="unbind" handler="unbind_column4_cb"/> -->
+                      </object>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
