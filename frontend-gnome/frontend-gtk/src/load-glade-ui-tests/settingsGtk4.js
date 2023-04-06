@@ -40,7 +40,7 @@ const Settings = GObject.registerClass(
                 // Whether the GtkSwitch widget is in its on or off state.
                 const active = widget.active
                 log('show_app_icon_switch activate via lambda: ' + active);
-                hide_icon_for_video_player_switch.set_sensitive(active);ning
+                hide_icon_for_video_player_switch.set_sensitive(active);
                 log('The hide_icon_for_video_player_switch_active is ' + hide_icon_for_video_player_switch.get_active());
             });
 

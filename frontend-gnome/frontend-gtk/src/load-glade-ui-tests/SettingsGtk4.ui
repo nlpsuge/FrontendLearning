@@ -43,6 +43,7 @@
                             </child>
                             <child>
                               <object class="GtkSwitch" id="show_app_icon_switch_sensitive">
+                                <property name="active">True</property>
                                 <property name="sensitive">false</property>
                                 <property name="focusable">1</property>
                                 <property name="halign">end</property>
