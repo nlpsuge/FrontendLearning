@@ -605,6 +605,11 @@ for (const [k, v] of map1) {
 const map = new Map();
 map.set('key1', {v1: 'value1'});
 map.set('key2', {v2: 'value2'});
+map.set('key3', 'v3');
+
+for (const [key, value] of map) {
+    console.log(`${key}: ${JSON.stringify(value)}`);
+}
 
 const jsonText = JSON.stringify(Array.from(map.entries()));
 console.log(jsonText);
@@ -737,6 +742,12 @@ const baz = 0 ?? 42;
 console.log(baz);
 // expected output: 0
 ```
+
+# Double Bitwise NOT Operator (~~)
+
+[JavaScript's Double Bitwise NOT Operator (~~)](https://codepen.io/supernova_at/post/javascript-s-double-bitwise-not-operator)
+
+[What is the "double tilde" (~~) operator in JavaScript?](https://stackoverflow.com/questions/5971645/what-is-the-double-tilde-operator-in-javascript)
 
 # [Math.max()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
 
@@ -916,3 +927,46 @@ console.log(capitalized)
 Note:
 1. `str.substring(1)` is faster than `str.slice(1)`
 2. `str[0]` can be replaced with `str.charAt(0)`
+
+
+# Singleton
+
+## Singleton in ES6
+
+[How to Implement the Singleton Pattern in JavaScript ES6+](https://code.tutsplus.com/tutorials/how-to-implement-the-singleton-pattern-in-javascript-es6--cms-39927)
+
+### Implement singleton via ES6 Modules
+
+ES6 modules are singletons by default
+```js
+const currentDateAndTime = new Object("I am instantiated at:" + new Date().toLocaleString());
+
+export default currentDateAndTime;
+```
+
+The `currentDateAndTime` object is scoped to a module, it’s guaranteed that you’ll get the same object every time you include the above ES6 module in other files.
+
+### Implement singleton in ES6 classes via `static` method
+
+```js
+class DBConnection {
+  constructor(conString) {
+      this.conString = conString
+  }
+
+  static getInstance(conString) {
+    if (!this.instance) {
+      this.instance = new DBConnection(conString);
+    }
+
+    return this.instance;
+  }
+}
+
+let con1 = DBConnection.getInstance('mysqldb1');
+let con2 = DBConnection.getInstance('mysqldb2');
+
+//the connections are the same
+console.log("con1: "+con1.conString); // con1: mysqldb1
+console.log("con2: "+con2.conString); // con1: mysqldb1
+```
