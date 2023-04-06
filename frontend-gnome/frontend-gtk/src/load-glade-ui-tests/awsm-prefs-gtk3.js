@@ -25,6 +25,9 @@ const Prefs = GObject.registerClass(
             this.notebook = this._builder.get_object('prefs_notebook');
             
             this.window = new Gtk.Window();
+            // hide window from the panel bar and the overview
+            this.window.set_skip_taskbar_hint(true);
+            // this.window.set_property('skip_taskbar_hint', true);
             this.window.add(this.notebook);
             this.app = new Gtk.Application();
             this.app.connect('activate', () => {
