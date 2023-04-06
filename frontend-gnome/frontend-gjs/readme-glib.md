@@ -47,7 +47,7 @@ during times where the machine is suspended.
 Return the real wall-clock time, the number of microseconds since January 1, 1970 UTC
 
 
-# [GVariant](https://gjs.guide/guides/glib/gvariant.html#basic-usage)
+# [GVariant](https://gjs.guide/guides/glib/gvariant.html)
 
 In some ways you can think of GVariant like JSON and each `GLib.Variant` object like a JSON document. It's a format for storing structured data that can be serialized while preserving type information.
 
@@ -67,9 +67,39 @@ if (variantStrv.get_type_string() === 'as')
 
 The variant format is foundational to DBus.
 
-# [GVariant Format Strings](https://docs.gtk.org/glib/gvariant-format-strings.html)
+```javascript
+const {GLib} = imports.gi;
+// Serializing JSON to a string
+// Output: {"name":"Mario","lives":3,"active":true}
+const json = {
+    name: "Mario",
+    lives: 3,
+    active: true,
+};
 
-# DBus and GVariant
+const jsonString = JSON.stringify(json);
+
+
+// Serializing GVariant to a string
+// Output: {'name': <'Mario'>, 'lives': <uint32 3>, 'active': <true>}
+const variant = new GLib.Variant('a{sv}', {
+    name: GLib.Variant.new_string('Mario'),
+    lives: GLib.Variant.new_uint32(3),
+    active: GLib.Variant.new_boolean(true),
+});
+
+let variantString = variant.print(true);
+// {'name': <'Mario'>, 'lives': <uint32 3>, 'active': <true>}
+log(variantString);
+
+variantString = variant.recursiveUnpack();
+// { name: "Mario", lives: 3, active: true }
+log(variantString);
+```
+
+## [GVariant Format Strings](https://docs.gtk.org/glib/gvariant-format-strings.html)
+
+## DBus and GVariant
 
 Since the variant format is foundational to DBus, there are two things you should take note of:
 
@@ -77,7 +107,37 @@ Since the variant format is foundational to DBus, there are two things you shoul
 
 2.  [There is no `null` type supported in DBus](https://gitlab.freedesktop.org/dbus/dbus/issues/25), so you have to use either empty types or another alternative.
 
-# GSettings and GVariant
+### Explain
+* `[]` arrays
+* `a{sv}` dictionaries 
+* `()` tuples
+
+#### Dictionary
+```js
+var dict = {
+  FirstName: "Chris",
+  "one": 1,
+  1: "some value"
+};
+```
+
+But JavaScript doesn’t natively include a type called “Dictionary”.
+
+#### Explain a{sa{sv}}
+
+See: [What the heck is a dbus argument of type a{sa{sv}} in the Network Manager API?](https://stackoverflow.com/questions/73451788/what-the-heck-is-a-dbus-argument-of-type-asasv-in-the-network-manager-api)
+
+* `s` is std::string.
+* `v` is variant.
+* `a{}` is std::map.
+* `a{sv}` is std::map<std::string, Variant>
+* Finally: `a{sa{sv}}` is std::map<std::string, std::map<std::string, Variant>>
+
+Variant can hold value of any D-Bus-supported type
+
+
+
+## GSettings and GVariant
 
 `GVariant` is the storage and data exchange format for [`GSettings`](https://developer.gnome.org/gio/stable/GSettings.html).
 
