@@ -1,6 +1,7 @@
 #!/usr/bin/env gjs
 
-GTop = imports.gi.GTop;
+// GTop = imports.gi.GTop;
+GTop = import('gi://GTop');
 
 const map = new Map();
 function printState(pid) {
